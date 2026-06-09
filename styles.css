@@ -1,0 +1,468 @@
+/* ═══════════════════════════════════════════════════════════════
+   BOURBON CHOCOLATES · Landing Page Styles
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Reset & Base ─────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+  color: #F5E6C8;
+  background: #1C110B;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(201, 168, 76, 0.3);
+  color: #F5E6C8;
+}
+
+/* ── Grain Texture Overlay ────────────────────────────────────── */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── Fixed Background Layer (scroll-driven color) ─────────────── */
+#bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-color: #1C110B;
+}
+
+/* ── Navbar ────────────────────────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  background: transparent;
+  transition:
+    background-color 0.4s ease,
+    border-color 0.4s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.navbar.scrolled {
+  background: rgba(13, 9, 7, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom-color: rgba(201, 168, 76, 0.07);
+}
+
+/* ── Logo ──────────────────────────────────────────────────────── */
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  background: linear-gradient(
+    90deg,
+    #C9A84C 0%, #E5D28C 25%, #C9A84C 50%, #E5D28C 75%, #C9A84C 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 5s linear infinite;
+}
+
+/* ── Nav Separator ────────────────────────────────────────────── */
+.nav-separator {
+  width: 1px;
+  height: 1.4rem;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(201, 168, 76, 0.25),
+    transparent
+  );
+  margin: 0 1rem;
+  flex-shrink: 0;
+}
+
+/* ── Nav Links ─────────────────────────────────────────────────── */
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: rgba(245, 230, 200, 0.35);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.35s ease;
+}
+
+.nav-link:hover {
+  color: rgba(245, 230, 200, 0.75);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.35s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ── Section Layout ───────────────────────────────────────────── */
+.chocolate-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.section-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 560px;
+  padding: 0 1.5rem;
+}
+
+/* ── Section Texts ────────────────────────────────────────────── */
+.section-text {
+  opacity: 0;
+  transform: translateY(45px);
+}
+
+.section-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  color: rgba(201, 168, 76, 0.45);
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  font-weight: 700;
+  color: #F5E6C8;
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+
+.section-title .accent {
+  font-style: italic;
+  background: linear-gradient(
+    90deg,
+    #C9A84C 0%, #E5D28C 25%, #C9A84C 50%, #E5D28C 75%, #C9A84C 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 5s linear infinite;
+}
+
+.section-description {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(245, 230, 200, 0.38);
+  line-height: 1.75;
+  max-width: 400px;
+  margin-bottom: 0.75rem;
+}
+
+.section-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #C9A84C;
+  letter-spacing: 0.05em;
+}
+
+/* ── Product Image ────────────────────────────────────────────── */
+.product-image-container {
+  position: relative;
+  width: 340px;
+  height: 180px;
+  margin: 1.75rem 0;
+  cursor: pointer;
+}
+
+.product-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  /* Elimina el fondo blanco mezclándolo con el fondo oscuro */
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 20px 40px rgba(201, 168, 76, 0.15));
+}
+
+/* La vainilla blanca (caja crema) necesita screen en vez de multiply */
+.product-img-galleta.blend-screen,
+.product-img-envase.blend-screen {
+  mix-blend-mode: screen;
+}
+
+.product-img-envase {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* galleta solo existe cuando hay crossfade; actualmente no hay */
+.product-img-galleta {
+  opacity: 0;
+  z-index: 3;
+}
+
+/* Glow sutil en hover (sin border ya que no hay recorte) */
+.product-image-container::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(201, 168, 76, 0) 60%, transparent 100%);
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+}
+
+.product-image-container:hover::after {
+  opacity: 1;
+}
+
+/* Hover hint label */
+.hover-hint {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: rgba(201, 168, 76, 0.25);
+  white-space: nowrap;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 4;
+}
+
+.product-image-container:hover .hover-hint {
+  opacity: 0;
+}
+
+/* "Coming soon" overlay for no-galleta products */
+.coming-soon-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(13, 9, 7, 0.88);
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 4;
+}
+
+.product-image-container:hover .coming-soon-overlay {
+  opacity: 1;
+}
+
+.coming-soon-text {
+  color: rgba(201, 168, 76, 0.45);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+/* ── Parallax SVG Decorations ─────────────────────────────────── */
+.parallax-svg {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform;
+  z-index: 1;
+}
+
+/* ── Section Bottom Divider ───────────────────────────────────── */
+.section-divider {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 168, 76, 0.2),
+    transparent
+  );
+}
+
+/* ── Keyframe Animations ──────────────────────────────────────── */
+
+/* Levitation */
+@keyframes levitate {
+  0%, 100% {
+    transform: translateY(0px) rotate(-1.2deg);
+  }
+  50% {
+    transform: translateY(-16px) rotate(1.2deg);
+  }
+}
+
+.levitate {
+  animation: levitate 5s ease-in-out infinite;
+}
+
+/* Gold shimmer */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Subtle pulse for section indicator */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+/* ── Section Indicator Dots ───────────────────────────────────── */
+.section-indicators {
+  position: fixed;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.indicator-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  padding: 0;
+}
+
+.indicator-dot:hover {
+  border-color: rgba(201, 168, 76, 0.5);
+}
+
+.indicator-dot.active {
+  background: #C9A84C;
+  border-color: #C9A84C;
+  box-shadow: 0 0 8px rgba(201, 168, 76, 0.25);
+}
+
+/* ── Custom Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0D0907;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 76, 0.18);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 168, 76, 0.32);
+}
+
+/* ── Responsive ───────────────────────────────────────────────── */
+@media (min-width: 768px) {
+  .nav-links {
+    display: flex;
+  }
+
+  .product-image-container {
+    width: 420px;
+    height: 220px;
+  }
+
+  .navbar {
+    padding: 0 3.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .product-image-container {
+    width: 480px;
+    height: 255px;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar {
+    padding: 0 1.25rem;
+  }
+
+  .section-content {
+    padding: 0 1rem;
+  }
+
+  .section-indicators {
+    right: 0.75rem;
+  }
+
+  .indicator-dot {
+    width: 5px;
+    height: 5px;
+  }
+}
