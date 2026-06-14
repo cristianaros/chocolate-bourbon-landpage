@@ -425,6 +425,193 @@ body {
   background: rgba(201, 168, 76, 0.32);
 }
 
+/* ── Section Content Inner (pass-through for non-specs sections) ── */
+.section-content-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ── Two-column layout for sections with specs ───────────────── */
+.section-content-with-specs {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3.5rem;
+  max-width: 1100px;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.section-product-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 480px;
+}
+
+/* ── Specs Panel ─────────────────────────────────────────────── */
+.specs-panel {
+  flex: 0 0 320px;
+  max-width: 340px;
+  max-height: 78vh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(201, 168, 76, 0.08);
+  border-radius: 14px;
+  padding: 1.5rem 1.35rem;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow:
+    0 4px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Custom scrollbar inside specs panel */
+.specs-panel::-webkit-scrollbar {
+  width: 3px;
+}
+.specs-panel::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 76, 0.15);
+  border-radius: 2px;
+}
+
+.specs-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.15rem;
+}
+
+.specs-header-line {
+  flex: 1;
+  height: 1px;
+  opacity: 0.2;
+}
+
+.specs-header-title {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  color: rgba(245, 230, 200, 0.5);
+  white-space: nowrap;
+}
+
+/* ── Specs Groups ────────────────────────────────────────────── */
+.specs-group {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.06);
+}
+
+.specs-group:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.specs-group-title {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(201, 168, 76, 0.4);
+  margin-bottom: 0.45rem;
+}
+
+/* ── Specs Rows (key-value pairs) ────────────────────────────── */
+.specs-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.2rem 0;
+  gap: 0.5rem;
+}
+
+.specs-row-sub {
+  padding-left: 0.1rem;
+}
+
+.specs-row-sub .specs-label {
+  color: rgba(245, 230, 200, 0.22);
+  font-size: 0.72rem;
+}
+
+.specs-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(245, 230, 200, 0.32);
+  flex-shrink: 0;
+}
+
+.specs-value {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(245, 230, 200, 0.55);
+  text-align: right;
+}
+
+/* ── Specs Ingredients ───────────────────────────────────────── */
+.specs-ingredients {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 300;
+  color: rgba(245, 230, 200, 0.28);
+  line-height: 1.65;
+  word-break: break-all;
+}
+
+/* ── Specs Allergens ─────────────────────────────────────────── */
+.specs-allergen-note {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 300;
+  color: rgba(245, 230, 200, 0.2);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.specs-allergen-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.specs-allergen-tag {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  padding: 0.18rem 0.55rem;
+  border: 1px solid;
+  border-radius: 20px;
+  opacity: 0.65;
+  transition: opacity 0.3s ease;
+}
+
+.specs-allergen-tag:hover {
+  opacity: 1;
+}
+
+/* ── Specs Nutrition Table ───────────────────────────────────── */
+.specs-nutrition-table .specs-row {
+  border-bottom: 1px solid rgba(201, 168, 76, 0.04);
+}
+
+.specs-nutrition-table .specs-row:last-child {
+  border-bottom: none;
+}
+
 /* ── Responsive ───────────────────────────────────────────────── */
 @media (min-width: 768px) {
   .nav-links {
@@ -464,5 +651,54 @@ body {
   .indicator-dot {
     width: 5px;
     height: 5px;
+  }
+
+  /* Specs: stack vertically on mobile */
+  .section-content-with-specs {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 5rem 1rem 2rem;
+    align-items: center;
+  }
+
+  .has-specs {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .section-product-side {
+    max-width: 100%;
+  }
+
+  .specs-panel {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+    max-height: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .section-content-with-specs {
+    gap: 2rem;
+    padding: 0 1.5rem;
+  }
+
+  .specs-panel {
+    flex: 0 0 260px;
+    max-width: 280px;
+    font-size: 0.9em;
+  }
+
+  .has-specs .product-image-container {
+    width: 300px;
+    height: 170px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .has-specs .product-image-container {
+    width: 400px;
+    height: 220px;
   }
 }

@@ -26,7 +26,7 @@ var products = [
   {
     id: 'azul',
     name: 'アルフォートミニチョコレート',
-    navLabel: 'カカオ引き立つ', //chocoalte normal
+    navLabel: 'アルフォートミニチョコレート', //chocolate normal
     subtitle: 'カカオ引き立つ',
     label: 'ミルクチョコレート',
     description: 'カカオの味わい深いミルクチョコレートと香ばしい全粒粉入りビスケットを組合せました。全粒粉の香ばしさと絶妙なおいしさのミルクチョコレートをお楽しみください。',
@@ -35,11 +35,31 @@ var products = [
     accentColor: '#4A7EC7',
     envase: 'images/chocolate normal.webp',
     galleta: null,
+    specs: {
+      details: [
+        { label: '内容量', value: '12個' },
+        { label: 'JANコード', value: '4901360353606' },
+      ],
+      ingredients: '砂糖（外国製造、国内製造）、小麦粉、全粉乳、カカオマス、ショートニング、植物油脂、小麦全粒粉、ココアバター、小麦ふすま、食塩／乳化剤（大豆由来）、膨脹剤、香料、酸化防止剤（Ｖ.Ｅ）',
+      allergens: '乳、 小麦、 大豆',
+      allergenNote: '特定原材料等28品目中',
+      nutritionLabel: '栄養成分表示　12個（標準55ｇ）当り',
+      nutrition: [
+        { label: 'エネルギー', value: '287 kcal' },
+        { label: 'たんぱく質', value: '4.6 g' },
+        { label: '脂質', value: '15.7 g' },
+        { label: '　－飽和脂肪酸', value: '7.9 g', sub: true },
+        { label: '炭水化物', value: '32.9 g' },
+        { label: '　－糖質', value: '30.8 g', sub: true },
+        { label: '　－食物繊維', value: '2.1 g', sub: true },
+        { label: '食塩相当量', value: '0.2 g' },
+      ],
+    },
   },
   {
     id: 'celeste',
-    name: 'アルフォートミニチョコレート リッチミルク',
-    navLabel: '濃厚なミルク', //chocolate leche
+    name: 'リッチミルク',
+    navLabel: 'リッチミルク', //chocolate leche
     subtitle: '濃厚なミルク',
     label: 'リッチミルクチョコレート',
     description: '濃厚なミルクチョコレートと香ばしい全粒粉入りビスケットの絶妙な組み合わせ。クリーミーで豊かなミルクの味わいが口の中に広がります。',
@@ -48,11 +68,31 @@ var products = [
     accentColor: '#5BB8D4',
     envase: 'images/chocolate leche.webp',
     galleta: null,
+    specs: {
+      details: [
+        { label: '内容量', value: '12個' },
+        { label: 'JANコード', value: '4901360364169' },
+      ],
+      ingredients: '砂糖（国内製造、タイ製造）、小麦粉、全粉乳、植物油脂、ショートニング、小麦全粒粉、カカオマス、ホエイパウダー（乳成分を含む）、ココアバター、小麦ふすま、食塩／乳化剤（大豆由来）、膨脹剤、香料（乳由来）、酸化防止剤（Ｖ.Ｅ）',
+      allergens: '乳、 小麦、 大豆',
+      allergenNote: '特定原材料等28品目中',
+      nutritionLabel: '栄養成分表示　12個（標準55ｇ）当り',
+      nutrition: [
+        { label: 'エネルギー', value: '294 kcal' },
+        { label: 'たんぱく質', value: '4.6 g' },
+        { label: '脂質', value: '16.6 g' },
+        { label: '　－飽和脂肪酸', value: '8.6 g', sub: true },
+        { label: '炭水化物', value: '32.1 g' },
+        { label: '　－糖質', value: '30.9 g', sub: true },
+        { label: '　－食物繊維', value: '1.2 g', sub: true },
+        { label: '食塩相当量', value: '0.2 g' },
+      ],
+    },
   },
   {
     id: 'blanco',
-    name: 'アルフォートミニチョコレート バニラホワイト',
-    navLabel: 'バニラ＆ココア', // chocolate blanco
+    name: 'バニラホワイト',
+    navLabel: 'バニラホワイト', // chocolate blanco
     subtitle: 'バニラ＆ココア',
     label: 'ホワイトチョコレート',
     description: 'シルクのようなホワイトチョコレートにマダガスカル産バニラを浸透。職人の手によって最高潮に達した純粋な味わい。',
@@ -62,19 +102,59 @@ var products = [
     envase: 'images/chocolate vainilla.webp',
     galleta: null,
     blendScreen: true,
+    specs: {
+      details: [
+        { label: '内容量', value: '12個' },
+        { label: 'JANコード', value: '4901360353620' },
+      ],
+      ingredients: '砂糖（国内製造、タイ製造）、小麦粉、植物油脂、ショートニング、全粉乳、デキストリン、ホエイパウダー（乳成分を含む）、ココアバター、ココアパウダー、小麦全粒粉、クリーミングパウダー（乳成分を含む）、乳糖、食塩、バニラビーンズ／乳化剤（大豆由来）、膨脹剤、香料（乳由来）、酸化防止剤（Ｖ.Ｅ）',
+      allergens: '乳、 小麦、 大豆',
+      allergenNote: '特定原材料等28品目中',
+      nutritionLabel: '栄養成分表示　12個（標準55ｇ）当り',
+      nutrition: [
+        { label: 'エネルギー', value: '294 kcal' },
+        { label: 'たんぱく質', value: '3.5 g' },
+        { label: '脂質', value: '16.6 g' },
+        { label: '　－飽和脂肪酸', value: '8.7 g', sub: true },
+        { label: '炭水化物', value: '33.2 g' },
+        { label: '　－糖質', value: '32.1 g', sub: true },
+        { label: '　－食物繊維', value: '1.1 g', sub: true },
+        { label: '食塩相当量', value: '0.3 g' },
+      ],
+    },
   },
   {
     id: 'marron',
-    name: 'アルフォートミニチョコレート ショコラサブレ',
-    navLabel: '発酵バターたっぷりのショコラサブレ', //chocolate negro
+    name: 'ショコラサブレ',
+    navLabel: 'ショコラサブレ', //chocolate negro
     subtitle: '発酵バターたっぷりのショコラサブレ',
     label: 'ダブルチョコレート',
-    description: 'カカオ香るチョコ＆サブレの贅沢な融合。濃厚なダークチョコレートと香ばしいショコラサブレが織りなす、深みのある味わいをお楽しみください。',
+    description: '濃厚なカカオチョコレートとサクサクのサブレ生地を組み合わせた、贅沢な味わい。',
     price: '¥240',
     bgColor: '#1A0A06',
     accentColor: '#7C4A3C',
     envase: 'images/chocolate amargo.webp',
     galleta: null,
+    specs: {
+      details: [
+        { label: '内容量', value: '12個' },
+        { label: 'JANコード', value: '4901360362189' },
+      ],
+      ingredients: '砂糖（国内製造、タイ製造）、小麦粉、植物油脂、カカオマス、乳糖、ショートニング、でん粉、マーガリン（乳成分を含む）、全粉乳、バター、ホエイパウダー（乳成分を含む）、ココアパウダー、ココアバター、食塩／乳化剤（大豆由来）、膨脹剤、香料（大豆由来）',
+      allergens: '乳、 小麦、 大豆',
+      allergenNote: '特定原材料等28品目中',
+      nutritionLabel: '栄養成分表示　12個（標準52ｇ）当り',
+      nutrition: [
+        { label: 'エネルギー', value: '279 kcal' },
+        { label: 'たんぱく質', value: '2.7 g' },
+        { label: '脂質', value: '15.9 g' },
+        { label: '　－飽和脂肪酸', value: '8.5 g', sub: true },
+        { label: '炭水化物', value: '31.9 g' },
+        { label: '　－糖質', value: '30.4 g', sub: true },
+        { label: '　－食物繊維', value: '1.5 g', sub: true },
+        { label: '食塩相当量', value: '0.2 g' },
+      ],
+    },
   },
 ];
 
@@ -297,6 +377,73 @@ function renderTitle(subtitle) {
 
 
 /* ═══════════════════════════════════════
+   COMPONENT: SpecsPanel
+   Technical specifications card
+   ═══════════════════════════════════════ */
+
+function SpecsPanel(props) {
+  var specs = props.specs;
+  var accentColor = props.accentColor;
+
+  return h('div', { className: 'specs-panel section-text' },
+    // Header
+    h('div', { className: 'specs-header' },
+      h('span', { className: 'specs-header-line', style: { background: accentColor } }),
+      h('span', { className: 'specs-header-title' }, '製品情報'),
+      h('span', { className: 'specs-header-line', style: { background: accentColor } })
+    ),
+
+    // Basic details (内容量, JAN)
+    h('div', { className: 'specs-group' },
+      specs.details.map(function(item, i) {
+        return h('div', { key: 'detail-' + i, className: 'specs-row' },
+          h('span', { className: 'specs-label' }, item.label),
+          h('span', { className: 'specs-value' }, item.value)
+        );
+      })
+    ),
+
+    // Ingredients
+    h('div', { className: 'specs-group' },
+      h('div', { className: 'specs-group-title' }, '原材料名／添加物名'),
+      h('p', { className: 'specs-ingredients' }, specs.ingredients)
+    ),
+
+    // Allergens
+    h('div', { className: 'specs-group specs-allergen-group' },
+      h('div', { className: 'specs-group-title' }, 'アレルギー物質'),
+      h('span', { className: 'specs-allergen-note' }, '〈' + specs.allergenNote + '〉'),
+      h('div', { className: 'specs-allergen-tags' },
+        specs.allergens.split('、').map(function(a, i) {
+          return h('span', {
+            key: 'allergen-' + i,
+            className: 'specs-allergen-tag',
+            style: { borderColor: accentColor, color: accentColor },
+          }, a.trim());
+        })
+      )
+    ),
+
+    // Nutrition
+    h('div', { className: 'specs-group' },
+      h('div', { className: 'specs-group-title' }, specs.nutritionLabel),
+      h('div', { className: 'specs-nutrition-table' },
+        specs.nutrition.map(function(item, i) {
+          return h('div', {
+            key: 'nut-' + i,
+            className: 'specs-row' + (item.sub ? ' specs-row-sub' : ''),
+          },
+            h('span', { className: 'specs-label' }, item.label),
+            h('span', { className: 'specs-value' }, item.value)
+          );
+        })
+      )
+    )
+  );
+}
+
+
+/* ═══════════════════════════════════════
    COMPONENT: ChocolateSection
    ═══════════════════════════════════════ */
 
@@ -356,20 +503,30 @@ function ChocolateSection(props) {
     );
   });
 
+  var hasSpecs = !!product.specs;
+  var sectionClass = 'chocolate-section' + (hasSpecs ? ' has-specs' : '');
+
   return h('section', {
     ref: sectionRef,
     id: 'section-' + index,
-    className: 'chocolate-section',
+    className: sectionClass,
     'aria-label': product.name,
   },
     decoElements[0], decoElements[1], decoElements[2], decoElements[3], decoElements[4],
 
-    h('div', { className: 'section-content' },
-      h('span', { className: 'section-text section-label' }, product.label),
-      renderTitle(product.subtitle),
-      h(ProductImage, { product: product }),
-      h('p', { className: 'section-text section-description' }, product.description),
-      h('span', { className: 'section-text section-price' }, product.price)
+    h('div', { className: hasSpecs ? 'section-content-with-specs' : 'section-content' },
+      // Left: product info
+      h('div', { className: hasSpecs ? 'section-product-side' : 'section-content-inner' },
+        h('span', { className: 'section-text section-label' }, product.label),
+        renderTitle(product.subtitle),
+        h(ProductImage, { product: product }),
+        h('p', { className: 'section-text section-description' }, product.description),
+        h('span', { className: 'section-text section-price' }, product.price)
+      ),
+      // Right: specs panel (only if specs data exists)
+      hasSpecs
+        ? h(SpecsPanel, { specs: product.specs, accentColor: product.accentColor })
+        : null
     ),
 
     index < products.length - 1
