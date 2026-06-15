@@ -25,16 +25,17 @@ var mInView   = hasMotion ? Motion.inView  : function() { return function(){}; }
 var products = [
   {
     id: 'azul',
-    name: 'アルフォートミニチョコレート',
+    name: 'アルフォートミニチョコレート', //アルフォートミニチョコレート
     navLabel: 'アルフォートミニチョコレート', //chocolate normal
-    subtitle: 'カカオ引き立つ',
-    label: 'ミルクチョコレート',
+    subtitle: 'ミルクチョコレート', // カカオ引き立つ
+    label: 'カカオ引き立つ',
     description: 'カカオの味わい深いミルクチョコレートと香ばしい全粒粉入りビスケットを組合せました。全粒粉の香ばしさと絶妙なおいしさのミルクチョコレートをお楽しみください。',
     price: '¥220',
     bgColor: '#0D1A3A',
     accentColor: '#4A7EC7',
     envase: 'images/chocolate normal.webp',
     galleta: null,
+    officialUrl: 'https://www.bourbon.co.jp/product/detail/35360-03.html',
     specs: {
       details: [
         { label: '内容量', value: '12個' },
@@ -43,31 +44,21 @@ var products = [
       ingredients: '砂糖（外国製造、国内製造）、小麦粉、全粉乳、カカオマス、ショートニング、植物油脂、小麦全粒粉、ココアバター、小麦ふすま、食塩／乳化剤（大豆由来）、膨脹剤、香料、酸化防止剤（Ｖ.Ｅ）',
       allergens: '乳、 小麦、 大豆',
       allergenNote: '特定原材料等28品目中',
-      nutritionLabel: '栄養成分表示　12個（標準55ｇ）当り',
-      nutrition: [
-        { label: 'エネルギー', value: '287 kcal' },
-        { label: 'たんぱく質', value: '4.6 g' },
-        { label: '脂質', value: '15.7 g' },
-        { label: '　－飽和脂肪酸', value: '7.9 g', sub: true },
-        { label: '炭水化物', value: '32.9 g' },
-        { label: '　－糖質', value: '30.8 g', sub: true },
-        { label: '　－食物繊維', value: '2.1 g', sub: true },
-        { label: '食塩相当量', value: '0.2 g' },
-      ],
     },
   },
   {
     id: 'celeste',
     name: 'リッチミルク',
     navLabel: 'リッチミルク', //chocolate leche
-    subtitle: '濃厚なミルク',
-    label: 'リッチミルクチョコレート',
+    subtitle: 'リッチミルクチョコレート', //濃厚なミルク
+    label: '濃厚なミルク',
     description: '濃厚なミルクチョコレートと香ばしい全粒粉入りビスケットの絶妙な組み合わせ。クリーミーで豊かなミルクの味わいが口の中に広がります。',
     price: '¥220',
     bgColor: '#0A1E2E',
     accentColor: '#5BB8D4',
     envase: 'images/chocolate leche.webp',
     galleta: null,
+    officialUrl: 'https://www.bourbon.co.jp/product/detail/36416.html',
     specs: {
       details: [
         { label: '内容量', value: '12個' },
@@ -76,25 +67,14 @@ var products = [
       ingredients: '砂糖（国内製造、タイ製造）、小麦粉、全粉乳、植物油脂、ショートニング、小麦全粒粉、カカオマス、ホエイパウダー（乳成分を含む）、ココアバター、小麦ふすま、食塩／乳化剤（大豆由来）、膨脹剤、香料（乳由来）、酸化防止剤（Ｖ.Ｅ）',
       allergens: '乳、 小麦、 大豆',
       allergenNote: '特定原材料等28品目中',
-      nutritionLabel: '栄養成分表示　12個（標準55ｇ）当り',
-      nutrition: [
-        { label: 'エネルギー', value: '294 kcal' },
-        { label: 'たんぱく質', value: '4.6 g' },
-        { label: '脂質', value: '16.6 g' },
-        { label: '　－飽和脂肪酸', value: '8.6 g', sub: true },
-        { label: '炭水化物', value: '32.1 g' },
-        { label: '　－糖質', value: '30.9 g', sub: true },
-        { label: '　－食物繊維', value: '1.2 g', sub: true },
-        { label: '食塩相当量', value: '0.2 g' },
-      ],
     },
   },
   {
     id: 'blanco',
     name: 'バニラホワイト',
     navLabel: 'バニラホワイト', // chocolate blanco
-    subtitle: 'バニラ＆ココア',
-    label: 'ホワイトチョコレート',
+    subtitle: 'ワイトチョコレート',
+    label: 'バニラ＆ココア', //ホワイトチョコレート
     description: 'シルクのようなホワイトチョコレートにマダガスカル産バニラを浸透。職人の手によって最高潮に達した純粋な味わい。',
     price: '¥240',
     bgColor: '#1C1A10',
@@ -102,6 +82,7 @@ var products = [
     envase: 'images/chocolate vainilla.webp',
     galleta: null,
     blendScreen: true,
+    officialUrl: 'https://www.bourbon.co.jp/product/detail/35362-02.html',
     specs: {
       details: [
         { label: '内容量', value: '12個' },
@@ -110,31 +91,21 @@ var products = [
       ingredients: '砂糖（国内製造、タイ製造）、小麦粉、植物油脂、ショートニング、全粉乳、デキストリン、ホエイパウダー（乳成分を含む）、ココアバター、ココアパウダー、小麦全粒粉、クリーミングパウダー（乳成分を含む）、乳糖、食塩、バニラビーンズ／乳化剤（大豆由来）、膨脹剤、香料（乳由来）、酸化防止剤（Ｖ.Ｅ）',
       allergens: '乳、 小麦、 大豆',
       allergenNote: '特定原材料等28品目中',
-      nutritionLabel: '栄養成分表示　12個（標準55ｇ）当り',
-      nutrition: [
-        { label: 'エネルギー', value: '294 kcal' },
-        { label: 'たんぱく質', value: '3.5 g' },
-        { label: '脂質', value: '16.6 g' },
-        { label: '　－飽和脂肪酸', value: '8.7 g', sub: true },
-        { label: '炭水化物', value: '33.2 g' },
-        { label: '　－糖質', value: '32.1 g', sub: true },
-        { label: '　－食物繊維', value: '1.1 g', sub: true },
-        { label: '食塩相当量', value: '0.3 g' },
-      ],
     },
   },
   {
     id: 'marron',
     name: 'ショコラサブレ',
     navLabel: 'ショコラサブレ', //chocolate negro
-    subtitle: '発酵バターたっぷりのショコラサブレ',
-    label: 'ダブルチョコレート',
+    subtitle: 'ダブルチョコレート', // 発酵バターたっぷりのショコラサブレ
+    label: '発酵バターたっぷりのショコラサブレ',
     description: '濃厚なカカオチョコレートとサクサクのサブレ生地を組み合わせた、贅沢な味わい。',
     price: '¥240',
     bgColor: '#1A0A06',
     accentColor: '#7C4A3C',
     envase: 'images/chocolate amargo.webp',
     galleta: null,
+    officialUrl: 'https://www.bourbon.co.jp/product/detail/36218.html',
     specs: {
       details: [
         { label: '内容量', value: '12個' },
@@ -143,17 +114,6 @@ var products = [
       ingredients: '砂糖（国内製造、タイ製造）、小麦粉、植物油脂、カカオマス、乳糖、ショートニング、でん粉、マーガリン（乳成分を含む）、全粉乳、バター、ホエイパウダー（乳成分を含む）、ココアパウダー、ココアバター、食塩／乳化剤（大豆由来）、膨脹剤、香料（大豆由来）',
       allergens: '乳、 小麦、 大豆',
       allergenNote: '特定原材料等28品目中',
-      nutritionLabel: '栄養成分表示　12個（標準52ｇ）当り',
-      nutrition: [
-        { label: 'エネルギー', value: '279 kcal' },
-        { label: 'たんぱく質', value: '2.7 g' },
-        { label: '脂質', value: '15.9 g' },
-        { label: '　－飽和脂肪酸', value: '8.5 g', sub: true },
-        { label: '炭水化物', value: '31.9 g' },
-        { label: '　－糖質', value: '30.4 g', sub: true },
-        { label: '　－食物繊維', value: '1.5 g', sub: true },
-        { label: '食塩相当量', value: '0.2 g' },
-      ],
     },
   },
 ];
@@ -274,7 +234,9 @@ function Navbar() {
     },
   },
     // Logo siempre a la izquierda
-    h('a', { href: '#section-0', className: 'logo' }, 'BOURBON'),
+    h('a', { href: '#section-0', className: 'logo' },
+      h('img', { src: 'images/bourbon_jp_logo.png', alt: 'Bourbon', className: 'logo-img' })
+    ),
 
     // Separador vertical
     h('div', { className: 'nav-separator' }),
@@ -311,16 +273,31 @@ function hexToRgb(hex) {
 
 function ProductImage(props) {
   var product = props.product;
+  var hasGalleta = !!product.galleta;
   // La vainilla blanca (caja crema) necesita screen en vez de multiply
-  var imgClass = 'product-img product-img-envase' + (product.blendScreen ? ' blend-screen' : '');
+  var envaseClass = 'product-img product-img-envase' + (product.blendScreen ? ' blend-screen' : '');
+  var galletaClass = 'product-img product-img-galleta' + (product.blendScreen ? ' blend-screen' : '');
 
-  return h('div', { className: 'product-image-container levitate section-text' },
+  return h('div', { className: 'product-image-container levitate section-text' + (hasGalleta ? ' has-galleta' : '') },
     h('img', {
       src: product.envase,
       alt: product.name,
-      className: imgClass,
+      className: envaseClass,
       loading: 'lazy',
-    })
+    }),
+    // Galleta image (shown on hover when available)
+    hasGalleta
+      ? h('img', {
+          src: product.galleta,
+          alt: product.name + ' galleta',
+          className: galletaClass,
+          loading: 'lazy',
+        })
+      : null,
+    // Hover hint
+    hasGalleta
+      ? h('span', { className: 'hover-hint' }, 'hover para ver galleta')
+      : null
   );
 }
 
@@ -384,6 +361,7 @@ function renderTitle(subtitle) {
 function SpecsPanel(props) {
   var specs = props.specs;
   var accentColor = props.accentColor;
+  var officialUrl = props.officialUrl;
 
   return h('div', { className: 'specs-panel section-text' },
     // Header
@@ -424,21 +402,21 @@ function SpecsPanel(props) {
       )
     ),
 
-    // Nutrition
-    h('div', { className: 'specs-group' },
-      h('div', { className: 'specs-group-title' }, specs.nutritionLabel),
-      h('div', { className: 'specs-nutrition-table' },
-        specs.nutrition.map(function(item, i) {
-          return h('div', {
-            key: 'nut-' + i,
-            className: 'specs-row' + (item.sub ? ' specs-row-sub' : ''),
+    // Official site button
+    officialUrl
+      ? h('div', { className: 'specs-group specs-official-group' },
+          h('a', {
+            href: officialUrl,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            className: 'specs-official-btn',
+            style: { borderColor: accentColor, color: accentColor },
           },
-            h('span', { className: 'specs-label' }, item.label),
-            h('span', { className: 'specs-value' }, item.value)
-          );
-        })
-      )
-    )
+            h('span', { className: 'specs-official-btn-text' }, '公式サイトへ'),
+            h('span', { className: 'specs-official-btn-arrow' }, '→')
+          )
+        )
+      : null
   );
 }
 
@@ -525,7 +503,7 @@ function ChocolateSection(props) {
       ),
       // Right: specs panel (only if specs data exists)
       hasSpecs
-        ? h(SpecsPanel, { specs: product.specs, accentColor: product.accentColor })
+        ? h(SpecsPanel, { specs: product.specs, accentColor: product.accentColor, officialUrl: product.officialUrl })
         : null
     ),
 

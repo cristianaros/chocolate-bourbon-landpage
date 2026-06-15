@@ -73,20 +73,22 @@ body {
 
 /* ── Logo ──────────────────────────────────────────────────────── */
 .logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.75rem;
-  font-weight: 700;
+  display: flex;
+  align-items: center;
   text-decoration: none;
-  letter-spacing: 0.1em;
-  background: linear-gradient(
-    90deg,
-    #C9A84C 0%, #E5D28C 25%, #C9A84C 50%, #E5D28C 75%, #C9A84C 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 5s linear infinite;
+  flex-shrink: 0;
+}
+
+.logo-img {
+  height: 2.8rem;
+  width: auto;
+  object-fit: contain;
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.logo:hover .logo-img {
+  filter: brightness(1.15);
+  transform: scale(1.05);
 }
 
 /* ── Nav Separator ────────────────────────────────────────────── */
@@ -603,13 +605,76 @@ body {
   opacity: 1;
 }
 
-/* ── Specs Nutrition Table ───────────────────────────────────── */
-.specs-nutrition-table .specs-row {
-  border-bottom: 1px solid rgba(201, 168, 76, 0.04);
+/* ── Specs Official Site Button ──────────────────────────────── */
+.specs-official-group {
+  display: flex;
+  justify-content: center;
+  border-bottom: none;
+  padding-top: 1rem;
+  padding-bottom: 0.25rem;
 }
 
-.specs-nutrition-table .specs-row:last-child {
-  border-bottom: none;
+.specs-official-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.4rem;
+  border: 1px solid;
+  border-radius: 28px;
+  text-decoration: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+.specs-official-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: inherit;
+}
+
+.specs-official-btn:hover::before {
+  opacity: 0.1;
+}
+
+.specs-official-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(201, 168, 76, 0.15);
+}
+
+.specs-official-btn-text {
+  position: relative;
+  z-index: 1;
+}
+
+.specs-official-btn-arrow {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+  font-size: 0.85rem;
+}
+
+.specs-official-btn:hover .specs-official-btn-arrow {
+  transform: translateX(3px);
+}
+
+/* ── Product Image: Hover Crossfade (envase → galleta) ────────── */
+.product-image-container.has-galleta:hover .product-img-envase {
+  opacity: 0;
+}
+
+.product-image-container.has-galleta:hover .product-img-galleta {
+  opacity: 1;
 }
 
 /* ── Responsive ───────────────────────────────────────────────── */
