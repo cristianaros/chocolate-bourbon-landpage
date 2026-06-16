@@ -1,8 +1,8 @@
-/* ═══════════════════════════════════════════════════════════════
-   BOURBON CHOCOLATES · Landing Page Styles
-   ═══════════════════════════════════════════════════════════════ */
+/* ==========================================================================
+   Bourbon Chocolate Landing Page Styles
+   ========================================================================== */
 
-/* ── Reset & Base ─────────────────────────────────────────────── */
+/* -- Reset & Base Styles -- */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -27,7 +27,7 @@ body {
   color: #F5E6C8;
 }
 
-/* ── Grain Texture Overlay ────────────────────────────────────── */
+/* -- Grain Texture Overlay -- */
 .grain {
   position: fixed;
   inset: 0;
@@ -37,7 +37,7 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* ── Fixed Background Layer (scroll-driven color) ─────────────── */
+/* -- Fixed Background Layer (scroll-driven color transitions) -- */
 #bg-layer {
   position: fixed;
   inset: 0;
@@ -45,7 +45,7 @@ body {
   background-color: #1C110B;
 }
 
-/* ── Navbar ────────────────────────────────────────────────────── */
+/* -- Navigation Header -- */
 .navbar {
   position: fixed;
   top: 0;
@@ -71,7 +71,7 @@ body {
   border-bottom-color: rgba(201, 168, 76, 0.07);
 }
 
-/* ── Logo ──────────────────────────────────────────────────────── */
+/* -- Logo -- */
 .logo {
   display: flex;
   align-items: center;
@@ -80,7 +80,7 @@ body {
 }
 
 .logo-img {
-  height: 2.8rem;
+  height: 3.6rem;
   width: auto;
   object-fit: contain;
   transition: filter 0.3s ease, transform 0.3s ease;
@@ -91,21 +91,7 @@ body {
   transform: scale(1.05);
 }
 
-/* ── Nav Separator ────────────────────────────────────────────── */
-.nav-separator {
-  width: 1px;
-  height: 1.4rem;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(201, 168, 76, 0.25),
-    transparent
-  );
-  margin: 0 1rem;
-  flex-shrink: 0;
-}
-
-/* ── Nav Links ─────────────────────────────────────────────────── */
+/* -- Navigation Links -- */
 .nav-links {
   display: none;
   align-items: center;
@@ -144,15 +130,17 @@ body {
   width: 100%;
 }
 
-/* ── Section Layout ───────────────────────────────────────────── */
+/* -- Section Layout (Spaced & Padded for Navbar Clearance) -- */
 .chocolate-section {
   position: relative;
-  height: 100vh;
+  min-height: 120vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding-top: 8rem;
+  padding-bottom: 6rem;
 }
 
 .section-content {
@@ -166,7 +154,14 @@ body {
   padding: 0 1.5rem;
 }
 
-/* ── Section Texts ────────────────────────────────────────────── */
+.section-content-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* -- Section Text Elements -- */
 .section-text {
   opacity: 0;
   transform: translateY(45px);
@@ -222,7 +217,7 @@ body {
   letter-spacing: 0.05em;
 }
 
-/* ── Product Image ────────────────────────────────────────────── */
+/* -- Interactive Product Image Container -- */
 .product-image-container {
   position: relative;
   width: 340px;
@@ -238,12 +233,10 @@ body {
   height: 100%;
   object-fit: contain;
   transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1);
-  /* Elimina el fondo blanco mezclándolo con el fondo oscuro */
   mix-blend-mode: multiply;
   filter: drop-shadow(0 20px 40px rgba(201, 168, 76, 0.15));
 }
 
-/* La vainilla blanca (caja crema) necesita screen en vez de multiply */
 .product-img-galleta.blend-screen,
 .product-img-envase.blend-screen {
   mix-blend-mode: screen;
@@ -254,13 +247,11 @@ body {
   z-index: 2;
 }
 
-/* galleta solo existe cuando hay crossfade; actualmente no hay */
 .product-img-galleta {
   opacity: 0;
   z-index: 3;
 }
 
-/* Glow sutil en hover (sin border ya que no hay recorte) */
 .product-image-container::after {
   content: '';
   position: absolute;
@@ -277,7 +268,7 @@ body {
   opacity: 1;
 }
 
-/* Hover hint label */
+/* Hover hint labels */
 .hover-hint {
   position: absolute;
   bottom: -28px;
@@ -298,33 +289,7 @@ body {
   opacity: 0;
 }
 
-/* "Coming soon" overlay for no-galleta products */
-.coming-soon-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(13, 9, 7, 0.88);
-  border-radius: 10px;
-  opacity: 0;
-  transition: opacity 0.7s cubic-bezier(0.25, 1, 0.5, 1);
-  z-index: 4;
-}
-
-.product-image-container:hover .coming-soon-overlay {
-  opacity: 1;
-}
-
-.coming-soon-text {
-  color: rgba(201, 168, 76, 0.45);
-  font-family: 'Jost', sans-serif;
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-}
-
-/* ── Parallax SVG Decorations ─────────────────────────────────── */
+/* -- Parallax SVG Decorations -- */
 .parallax-svg {
   position: absolute;
   pointer-events: none;
@@ -332,7 +297,7 @@ body {
   z-index: 1;
 }
 
-/* ── Section Bottom Divider ───────────────────────────────────── */
+/* -- Section Bottom Divider -- */
 .section-divider {
   position: absolute;
   bottom: 0;
@@ -348,9 +313,7 @@ body {
   );
 }
 
-/* ── Keyframe Animations ──────────────────────────────────────── */
-
-/* Levitation */
+/* -- Keyframe Animations -- */
 @keyframes levitate {
   0%, 100% {
     transform: translateY(0px) rotate(-1.2deg);
@@ -364,19 +327,12 @@ body {
   animation: levitate 5s ease-in-out infinite;
 }
 
-/* Gold shimmer */
 @keyframes shimmer {
   0%   { background-position: -200% center; }
   100% { background-position: 200% center; }
 }
 
-/* Subtle pulse for section indicator */
-@keyframes pulse-dot {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.7; }
-}
-
-/* ── Section Indicator Dots ───────────────────────────────────── */
+/* -- Section Indicator Dots -- */
 .section-indicators {
   position: fixed;
   right: 1.5rem;
@@ -409,7 +365,7 @@ body {
   box-shadow: 0 0 8px rgba(201, 168, 76, 0.25);
 }
 
-/* ── Custom Scrollbar ─────────────────────────────────────────── */
+/* -- Custom Scrollbar -- */
 ::-webkit-scrollbar {
   width: 4px;
 }
@@ -427,257 +383,7 @@ body {
   background: rgba(201, 168, 76, 0.32);
 }
 
-/* ── Section Content Inner (pass-through for non-specs sections) ── */
-.section-content-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-/* ── Two-column layout for sections with specs ───────────────── */
-.section-content-with-specs {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 3.5rem;
-  max-width: 1100px;
-  width: 100%;
-  padding: 0 2rem;
-}
-
-.section-product-side {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  flex: 1 1 0;
-  min-width: 0;
-  max-width: 480px;
-}
-
-/* ── Specs Panel ─────────────────────────────────────────────── */
-.specs-panel {
-  flex: 0 0 320px;
-  max-width: 340px;
-  max-height: 78vh;
-  overflow-y: auto;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(201, 168, 76, 0.08);
-  border-radius: 14px;
-  padding: 1.5rem 1.35rem;
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  box-shadow:
-    0 4px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
-/* Custom scrollbar inside specs panel */
-.specs-panel::-webkit-scrollbar {
-  width: 3px;
-}
-.specs-panel::-webkit-scrollbar-thumb {
-  background: rgba(201, 168, 76, 0.15);
-  border-radius: 2px;
-}
-
-.specs-header {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  margin-bottom: 1.15rem;
-}
-
-.specs-header-line {
-  flex: 1;
-  height: 1px;
-  opacity: 0.2;
-}
-
-.specs-header-title {
-  font-family: 'Jost', sans-serif;
-  font-size: 0.62rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.35em;
-  color: rgba(245, 230, 200, 0.5);
-  white-space: nowrap;
-}
-
-/* ── Specs Groups ────────────────────────────────────────────── */
-.specs-group {
-  padding: 0.7rem 0;
-  border-bottom: 1px solid rgba(201, 168, 76, 0.06);
-}
-
-.specs-group:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.specs-group-title {
-  font-family: 'Jost', sans-serif;
-  font-size: 0.6rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: rgba(201, 168, 76, 0.4);
-  margin-bottom: 0.45rem;
-}
-
-/* ── Specs Rows (key-value pairs) ────────────────────────────── */
-.specs-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 0.2rem 0;
-  gap: 0.5rem;
-}
-
-.specs-row-sub {
-  padding-left: 0.1rem;
-}
-
-.specs-row-sub .specs-label {
-  color: rgba(245, 230, 200, 0.22);
-  font-size: 0.72rem;
-}
-
-.specs-label {
-  font-family: 'Jost', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: rgba(245, 230, 200, 0.32);
-  flex-shrink: 0;
-}
-
-.specs-value {
-  font-family: 'Jost', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: rgba(245, 230, 200, 0.55);
-  text-align: right;
-}
-
-/* ── Specs Ingredients ───────────────────────────────────────── */
-.specs-ingredients {
-  font-family: 'Jost', sans-serif;
-  font-size: 0.68rem;
-  font-weight: 300;
-  color: rgba(245, 230, 200, 0.28);
-  line-height: 1.65;
-  word-break: break-all;
-}
-
-/* ── Specs Allergens ─────────────────────────────────────────── */
-.specs-allergen-note {
-  font-family: 'Jost', sans-serif;
-  font-size: 0.6rem;
-  font-weight: 300;
-  color: rgba(245, 230, 200, 0.2);
-  display: block;
-  margin-bottom: 0.4rem;
-}
-
-.specs-allergen-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-
-.specs-allergen-tag {
-  font-family: 'Jost', sans-serif;
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  padding: 0.18rem 0.55rem;
-  border: 1px solid;
-  border-radius: 20px;
-  opacity: 0.65;
-  transition: opacity 0.3s ease;
-}
-
-.specs-allergen-tag:hover {
-  opacity: 1;
-}
-
-/* ── Specs Official Site Button ──────────────────────────────── */
-.specs-official-group {
-  display: flex;
-  justify-content: center;
-  border-bottom: none;
-  padding-top: 1rem;
-  padding-bottom: 0.25rem;
-}
-
-.specs-official-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.55rem 1.4rem;
-  border: 1px solid;
-  border-radius: 28px;
-  text-decoration: none;
-  font-family: 'Jost', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-  position: relative;
-  overflow: hidden;
-  background: transparent;
-}
-
-.specs-official-btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: currentColor;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  border-radius: inherit;
-}
-
-.specs-official-btn:hover::before {
-  opacity: 0.1;
-}
-
-.specs-official-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(201, 168, 76, 0.15);
-}
-
-.specs-official-btn-text {
-  position: relative;
-  z-index: 1;
-}
-
-.specs-official-btn-arrow {
-  position: relative;
-  z-index: 1;
-  transition: transform 0.3s ease;
-  font-size: 0.85rem;
-}
-
-.specs-official-btn:hover .specs-official-btn-arrow {
-  transform: translateX(3px);
-}
-
-/* ── Product Image: Hover Crossfade (envase → galleta) ────────── */
-.product-image-container.has-galleta:hover .product-img-envase {
-  opacity: 0;
-}
-
-.product-image-container.has-galleta:hover .product-img-galleta {
-  opacity: 1;
-}
-
-/* ── Responsive ───────────────────────────────────────────────── */
+/* -- Responsive Styles -- */
 @media (min-width: 768px) {
   .nav-links {
     display: flex;
@@ -716,54 +422,5 @@ body {
   .indicator-dot {
     width: 5px;
     height: 5px;
-  }
-
-  /* Specs: stack vertically on mobile */
-  .section-content-with-specs {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 5rem 1rem 2rem;
-    align-items: center;
-  }
-
-  .has-specs {
-    height: auto;
-    min-height: 100vh;
-  }
-
-  .section-product-side {
-    max-width: 100%;
-  }
-
-  .specs-panel {
-    flex: none;
-    max-width: 100%;
-    width: 100%;
-    max-height: none;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-  .section-content-with-specs {
-    gap: 2rem;
-    padding: 0 1.5rem;
-  }
-
-  .specs-panel {
-    flex: 0 0 260px;
-    max-width: 280px;
-    font-size: 0.9em;
-  }
-
-  .has-specs .product-image-container {
-    width: 300px;
-    height: 170px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .has-specs .product-image-container {
-    width: 400px;
-    height: 220px;
   }
 }

@@ -1,9 +1,7 @@
-/* ═══════════════════════════════════════════════════════════════
-   BOURBON CHOCOLATES · Landing Page
-   React 18 + Motion (Framer Motion vanilla API) + Tailwind CSS
-
-   Runs directly in the browser — no build step required.
-   ═══════════════════════════════════════════════════════════════ */
+/* ==========================================================================
+   Bourbon Chocolate Landing Page Logic
+   React 18 + Framer Motion (Vanilla API) + Tailwind CSS (loaded in browser)
+   ========================================================================== */
 
 var h = React.createElement;
 var useState  = React.useState;
@@ -11,46 +9,32 @@ var useEffect = React.useEffect;
 var useRef    = React.useRef;
 var Fragment  = React.Fragment;
 
-// Motion library — graceful fallback
+// Motion library fallback
 var hasMotion = typeof Motion !== 'undefined';
 var mAnimate  = hasMotion ? Motion.animate : function() { return { cancel: function(){} }; };
 var mScroll   = hasMotion ? Motion.scroll  : function() { return function(){}; };
 var mInView   = hasMotion ? Motion.inView  : function() { return function(){}; };
 
-
-/* ═══════════════════════════════════════
-   productos info— Secciones 1, 2 y 4
-   ═══════════════════════════════════════ */
-
+// Product definitions
 var products = [
   {
     id: 'azul',
-    name: 'アルフォートミニチョコレート', //アルフォートミニチョコレート
-    navLabel: 'アルフォートミニチョコレート', //chocolate normal
-    subtitle: 'ミルクチョコレート', // カカオ引き立つ
+    name: 'アルフォートミニチョコレート',
+    navLabel: 'アルフォートミニチョコレート',
+    subtitle: 'ミルクチョコレート',
     label: 'カカオ引き立つ',
-    description: 'カカオの味わい深いミルクチョコレートと香ばしい全粒粉入りビスケットを組合せました。全粒粉の香ばしさと絶妙なおいしさのミルクチョコレートをお楽しみください。',
+    description: 'カカオ의味わい深いミルクチョコレートと香ばしい全粒粉入りビスケットを組合せました。全粒粉の香ばしさと絶妙なおいしさのミルクチョコレートをお楽しみください。',
     price: '¥220',
     bgColor: '#0D1A3A',
     accentColor: '#4A7EC7',
     envase: 'images/chocolate normal.webp',
     galleta: null,
-    officialUrl: 'https://www.bourbon.co.jp/product/detail/35360-03.html',
-    specs: {
-      details: [
-        { label: '内容量', value: '12個' },
-        { label: 'JANコード', value: '4901360353606' },
-      ],
-      ingredients: '砂糖（外国製造、国内製造）、小麦粉、全粉乳、カカオマス、ショートニング、植物油脂、小麦全粒粉、ココアバター、小麦ふすま、食塩／乳化剤（大豆由来）、膨脹剤、香料、酸化防止剤（Ｖ.Ｅ）',
-      allergens: '乳、 小麦、 大豆',
-      allergenNote: '特定原材料等28品目中',
-    },
   },
   {
     id: 'celeste',
     name: 'リッチミルク',
-    navLabel: 'リッチミルク', //chocolate leche
-    subtitle: 'リッチミルクチョコレート', //濃厚なミルク
+    navLabel: 'リッチミルク',
+    subtitle: 'リッチミルクチョコレート',
     label: '濃厚なミルク',
     description: '濃厚なミルクチョコレートと香ばしい全粒粉入りビスケットの絶妙な組み合わせ。クリーミーで豊かなミルクの味わいが口の中に広がります。',
     price: '¥220',
@@ -58,23 +42,13 @@ var products = [
     accentColor: '#5BB8D4',
     envase: 'images/chocolate leche.webp',
     galleta: null,
-    officialUrl: 'https://www.bourbon.co.jp/product/detail/36416.html',
-    specs: {
-      details: [
-        { label: '内容量', value: '12個' },
-        { label: 'JANコード', value: '4901360364169' },
-      ],
-      ingredients: '砂糖（国内製造、タイ製造）、小麦粉、全粉乳、植物油脂、ショートニング、小麦全粒粉、カカオマス、ホエイパウダー（乳成分を含む）、ココアバター、小麦ふすま、食塩／乳化剤（大豆由来）、膨脹剤、香料（乳由来）、酸化防止剤（Ｖ.Ｅ）',
-      allergens: '乳、 小麦、 大豆',
-      allergenNote: '特定原材料等28品目中',
-    },
   },
   {
     id: 'blanco',
     name: 'バニラホワイト',
-    navLabel: 'バニラホワイト', // chocolate blanco
+    navLabel: 'バニラホワイト',
     subtitle: 'ワイトチョコレート',
-    label: 'バニラ＆ココア', //ホワイトチョコレート
+    label: 'バニラ＆ココア',
     description: 'シルクのようなホワイトチョコレートにマダガスカル産バニラを浸透。職人の手によって最高潮に達した純粋な味わい。',
     price: '¥240',
     bgColor: '#1C1A10',
@@ -82,22 +56,12 @@ var products = [
     envase: 'images/chocolate vainilla.webp',
     galleta: null,
     blendScreen: true,
-    officialUrl: 'https://www.bourbon.co.jp/product/detail/35362-02.html',
-    specs: {
-      details: [
-        { label: '内容量', value: '12個' },
-        { label: 'JANコード', value: '4901360353620' },
-      ],
-      ingredients: '砂糖（国内製造、タイ製造）、小麦粉、植物油脂、ショートニング、全粉乳、デキストリン、ホエイパウダー（乳成分を含む）、ココアバター、ココアパウダー、小麦全粒粉、クリーミングパウダー（乳成分を含む）、乳糖、食塩、バニラビーンズ／乳化剤（大豆由来）、膨脹剤、香料（乳由来）、酸化防止剤（Ｖ.Ｅ）',
-      allergens: '乳、 小麦、 大豆',
-      allergenNote: '特定原材料等28品目中',
-    },
   },
   {
     id: 'marron',
     name: 'ショコラサブレ',
-    navLabel: 'ショコラサブレ', //chocolate negro
-    subtitle: 'ダブルチョコレート', // 発酵バターたっぷりのショコラサブレ
+    navLabel: 'ショコラサブレ',
+    subtitle: 'ダブルチョコレート',
     label: '発酵バターたっぷりのショコラサブレ',
     description: '濃厚なカカオチョコレートとサクサクのサブレ生地を組み合わせた、贅沢な味わい。',
     price: '¥240',
@@ -105,24 +69,10 @@ var products = [
     accentColor: '#7C4A3C',
     envase: 'images/chocolate amargo.webp',
     galleta: null,
-    officialUrl: 'https://www.bourbon.co.jp/product/detail/36218.html',
-    specs: {
-      details: [
-        { label: '内容量', value: '12個' },
-        { label: 'JANコード', value: '4901360362189' },
-      ],
-      ingredients: '砂糖（国内製造、タイ製造）、小麦粉、植物油脂、カカオマス、乳糖、ショートニング、でん粉、マーガリン（乳成分を含む）、全粉乳、バター、ホエイパウダー（乳成分を含む）、ココアパウダー、ココアバター、食塩／乳化剤（大豆由来）、膨脹剤、香料（大豆由来）',
-      allergens: '乳、 小麦、 大豆',
-      allergenNote: '特定原材料等28品目中',
-    },
   },
 ];
 
-
-/* ═══════════════════════════════════════
-   SVG SHAPE COMPONENTS (parallax decorations)
-   ═══════════════════════════════════════ */
-
+// SVG shape components for parallax decorations
 function SvgRing(props) {
   return h('svg', { width: props.size, height: props.size, viewBox: '0 0 100 100', fill: 'none', style: { opacity: props.opacity } },
     h('circle', { cx: 50, cy: 50, r: 38, stroke: '#C9A84C', strokeWidth: 0.8 })
@@ -173,11 +123,7 @@ var svgComponents = {
   wave: SvgWave,
 };
 
-
-/* ═══════════════════════════════════════
-   DECORATION GENERATOR
-   ═══════════════════════════════════════ */
-
+// Generate randomized parallax elements for each section
 function getDecorations(index) {
   var types = ['ring', 'diamond', 'dots', 'arc', 'cross', 'wave'];
   var result = [];
@@ -196,12 +142,7 @@ function getDecorations(index) {
   return result;
 }
 
-
-/* ═══════════════════════════════════════
-   COMPONENT: Navbar
-   Siempre fijo — no se oculta al hacer scroll.
-   ═══════════════════════════════════════ */
-
+// Fixed Header Navigation Bar
 function Navbar() {
   var state = useState(false);
   var scrolled = state[0], setScrolled = state[1];
@@ -213,16 +154,27 @@ function Navbar() {
       var y = window.scrollY;
       setScrolled(y > 60);
 
-      var vh = window.innerHeight;
-      var idx = Math.round(y / vh);
-      if (idx >= products.length) idx = products.length - 1;
+      var idx = 0;
+      var minDistance = Infinity;
+      var viewportCenter = window.innerHeight / 2;
+      for (var i = 0; i < products.length; i++) {
+        var el = document.getElementById('section-' + i);
+        if (el) {
+          var rect = el.getBoundingClientRect();
+          var sectionCenter = rect.top + rect.height / 2;
+          var distance = Math.abs(sectionCenter - viewportCenter);
+          if (distance < minDistance) {
+            minDistance = distance;
+            idx = i;
+          }
+        }
+      }
       setActiveIdx(idx);
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     return function() { window.removeEventListener('scroll', onScroll); };
   }, []);
 
-  // Color del producto activo
   var activeAccent = products[activeIdx] ? products[activeIdx].accentColor : '#C9A84C';
   var cls = 'navbar' + (scrolled ? ' scrolled' : '');
 
@@ -233,15 +185,9 @@ function Navbar() {
       transition: 'background-color 0.5s ease, border-color 0.6s ease',
     },
   },
-    // Logo siempre a la izquierda
     h('a', { href: '#section-0', className: 'logo' },
       h('img', { src: 'images/bourbon_jp_logo.png', alt: 'Bourbon', className: 'logo-img' })
     ),
-
-    // Separador vertical
-    h('div', { className: 'nav-separator' }),
-
-    // Links de chocolates
     h('nav', { className: 'nav-links' },
       products.map(function(p, i) {
         var isActive = i === activeIdx;
@@ -249,16 +195,14 @@ function Navbar() {
           key: p.id,
           href: '#section-' + i,
           className: 'nav-link' + (isActive ? ' active' : ''),
-          style: isActive
-            ? { color: products[i].accentColor }
-            : {},
+          style: isActive ? { color: products[i].accentColor } : {},
         }, p.navLabel);
       })
     )
   );
 }
 
-// Convierte hex #RRGGBB a 'R, G, B' para uso en rgba()
+// Convert HEX color to RGB string format
 function hexToRgb(hex) {
   var r = parseInt(hex.slice(1, 3), 16);
   var g = parseInt(hex.slice(3, 5), 16);
@@ -266,15 +210,10 @@ function hexToRgb(hex) {
   return r + ', ' + g + ', ' + b;
 }
 
-
-/* ═══════════════════════════════════════
-   COMPONENT: ProductImage
-   ═══════════════════════════════════════ */
-
+// Hoverable/Interactive Product Image
 function ProductImage(props) {
   var product = props.product;
   var hasGalleta = !!product.galleta;
-  // La vainilla blanca (caja crema) necesita screen en vez de multiply
   var envaseClass = 'product-img product-img-envase' + (product.blendScreen ? ' blend-screen' : '');
   var galletaClass = 'product-img product-img-galleta' + (product.blendScreen ? ' blend-screen' : '');
 
@@ -285,7 +224,6 @@ function ProductImage(props) {
       className: envaseClass,
       loading: 'lazy',
     }),
-    // Galleta image (shown on hover when available)
     hasGalleta
       ? h('img', {
           src: product.galleta,
@@ -294,27 +232,34 @@ function ProductImage(props) {
           loading: 'lazy',
         })
       : null,
-    // Hover hint
     hasGalleta
-      ? h('span', { className: 'hover-hint' }, 'hover para ver galleta')
+      ? h('span', { className: 'hover-hint' }, 'hover to see biscuit')
       : null
   );
 }
 
-
-/* ═══════════════════════════════════════
-   COMPONENT: SectionIndicators
-   ═══════════════════════════════════════ */
-
+// Sidebar indicators for current scroll section
 function SectionIndicators() {
   var state = useState(0);
   var activeIdx = state[0], setActiveIdx = state[1];
 
   useEffect(function() {
     function onScroll() {
-      var vh = window.innerHeight;
-      var idx = Math.round(window.scrollY / vh);
-      if (idx >= products.length) idx = products.length - 1;
+      var idx = 0;
+      var minDistance = Infinity;
+      var viewportCenter = window.innerHeight / 2;
+      for (var i = 0; i < products.length; i++) {
+        var el = document.getElementById('section-' + i);
+        if (el) {
+          var rect = el.getBoundingClientRect();
+          var sectionCenter = rect.top + rect.height / 2;
+          var distance = Math.abs(sectionCenter - viewportCenter);
+          if (distance < minDistance) {
+            minDistance = distance;
+            idx = i;
+          }
+        }
+      }
       setActiveIdx(idx);
     }
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -330,17 +275,13 @@ function SectionIndicators() {
           document.getElementById('section-' + i).scrollIntoView({ behavior: 'smooth' });
         },
         title: p.name,
-        'aria-label': 'Ir a sección ' + p.name,
+        'aria-label': 'Go to section ' + p.name,
       });
     })
   );
 }
 
-
-/* ═══════════════════════════════════════
-   HELPER: Título con acento dorado en última palabra
-   ═══════════════════════════════════════ */
-
+// Split title to apply gold gradient styling to the last word
 function renderTitle(subtitle) {
   var words = subtitle.split(' ');
   var lastWord = words.pop();
@@ -352,79 +293,7 @@ function renderTitle(subtitle) {
   );
 }
 
-
-/* ═══════════════════════════════════════
-   COMPONENT: SpecsPanel
-   Technical specifications card
-   ═══════════════════════════════════════ */
-
-function SpecsPanel(props) {
-  var specs = props.specs;
-  var accentColor = props.accentColor;
-  var officialUrl = props.officialUrl;
-
-  return h('div', { className: 'specs-panel section-text' },
-    // Header
-    h('div', { className: 'specs-header' },
-      h('span', { className: 'specs-header-line', style: { background: accentColor } }),
-      h('span', { className: 'specs-header-title' }, '製品情報'),
-      h('span', { className: 'specs-header-line', style: { background: accentColor } })
-    ),
-
-    // Basic details (内容量, JAN)
-    h('div', { className: 'specs-group' },
-      specs.details.map(function(item, i) {
-        return h('div', { key: 'detail-' + i, className: 'specs-row' },
-          h('span', { className: 'specs-label' }, item.label),
-          h('span', { className: 'specs-value' }, item.value)
-        );
-      })
-    ),
-
-    // Ingredients
-    h('div', { className: 'specs-group' },
-      h('div', { className: 'specs-group-title' }, '原材料名／添加物名'),
-      h('p', { className: 'specs-ingredients' }, specs.ingredients)
-    ),
-
-    // Allergens
-    h('div', { className: 'specs-group specs-allergen-group' },
-      h('div', { className: 'specs-group-title' }, 'アレルギー物質'),
-      h('span', { className: 'specs-allergen-note' }, '〈' + specs.allergenNote + '〉'),
-      h('div', { className: 'specs-allergen-tags' },
-        specs.allergens.split('、').map(function(a, i) {
-          return h('span', {
-            key: 'allergen-' + i,
-            className: 'specs-allergen-tag',
-            style: { borderColor: accentColor, color: accentColor },
-          }, a.trim());
-        })
-      )
-    ),
-
-    // Official site button
-    officialUrl
-      ? h('div', { className: 'specs-group specs-official-group' },
-          h('a', {
-            href: officialUrl,
-            target: '_blank',
-            rel: 'noopener noreferrer',
-            className: 'specs-official-btn',
-            style: { borderColor: accentColor, color: accentColor },
-          },
-            h('span', { className: 'specs-official-btn-text' }, '公式サイトへ'),
-            h('span', { className: 'specs-official-btn-arrow' }, '→')
-          )
-        )
-      : null
-  );
-}
-
-
-/* ═══════════════════════════════════════
-   COMPONENT: ChocolateSection
-   ═══════════════════════════════════════ */
-
+// Single-column scroll section layout
 function ChocolateSection(props) {
   var product = props.product;
   var index = props.index;
@@ -437,7 +306,7 @@ function ChocolateSection(props) {
 
     var cleanups = [];
 
-    // Text reveal on viewport entry
+    // Animate texts on entrance
     var cleanupInView = mInView(section, function(info) {
       var texts = info.target.querySelectorAll('.section-text');
       for (var i = 0; i < texts.length; i++) {
@@ -451,7 +320,7 @@ function ChocolateSection(props) {
     }, { amount: 0.3 });
     cleanups.push(cleanupInView);
 
-    // Parallax SVG decorations
+    // Apply parallax effects to SVG decorations
     var svgs = section.querySelectorAll('.parallax-svg');
     for (var j = 0; j < svgs.length; j++) {
       var speed = parseFloat(svgs[j].getAttribute('data-speed') || '0.3');
@@ -481,30 +350,22 @@ function ChocolateSection(props) {
     );
   });
 
-  var hasSpecs = !!product.specs;
-  var sectionClass = 'chocolate-section' + (hasSpecs ? ' has-specs' : '');
-
   return h('section', {
     ref: sectionRef,
     id: 'section-' + index,
-    className: sectionClass,
+    className: 'chocolate-section',
     'aria-label': product.name,
   },
     decoElements[0], decoElements[1], decoElements[2], decoElements[3], decoElements[4],
 
-    h('div', { className: hasSpecs ? 'section-content-with-specs' : 'section-content' },
-      // Left: product info
-      h('div', { className: hasSpecs ? 'section-product-side' : 'section-content-inner' },
+    h('div', { className: 'section-content' },
+      h('div', { className: 'section-content-inner' },
         h('span', { className: 'section-text section-label' }, product.label),
         renderTitle(product.subtitle),
         h(ProductImage, { product: product }),
         h('p', { className: 'section-text section-description' }, product.description),
         h('span', { className: 'section-text section-price' }, product.price)
-      ),
-      // Right: specs panel (only if specs data exists)
-      hasSpecs
-        ? h(SpecsPanel, { specs: product.specs, accentColor: product.accentColor, officialUrl: product.officialUrl })
-        : null
+      )
     ),
 
     index < products.length - 1
@@ -513,13 +374,8 @@ function ChocolateSection(props) {
   );
 }
 
-
-/* ═══════════════════════════════════════
-   COMPONENT: App
-   ═══════════════════════════════════════ */
-
+// App Root
 function App() {
-
   useEffect(function() {
     if (!hasMotion) return;
 
@@ -543,10 +399,5 @@ function App() {
     )
   );
 }
-
-
-/* ═══════════════════════════════════════
-   RENDER
-   ═══════════════════════════════════════ */
 
 ReactDOM.createRoot(document.getElementById('root')).render(h(App, null));
