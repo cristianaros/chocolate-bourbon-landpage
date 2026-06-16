@@ -29,6 +29,7 @@ var products = [
     accentColor: '#4A7EC7',
     envase: 'images/chocolate normal.webp',
     galleta: null,
+    buyUrl: 'https://www.bourbon.co.jp/product/detail/35360-03.html',
   },
   {
     id: 'celeste',
@@ -42,6 +43,7 @@ var products = [
     accentColor: '#5BB8D4',
     envase: 'images/chocolate leche.webp',
     galleta: null,
+    buyUrl: 'https://www.bourbon.co.jp/product/detail/36416.html',
   },
   {
     id: 'blanco',
@@ -56,6 +58,7 @@ var products = [
     envase: 'images/chocolate vainilla.webp',
     galleta: null,
     blendScreen: true,
+    buyUrl: 'https://www.bourbon.co.jp/product/detail/35362-02.html',
   },
   {
     id: 'marron',
@@ -69,6 +72,7 @@ var products = [
     accentColor: '#7C4A3C',
     envase: 'images/chocolate amargo.webp',
     galleta: null,
+    buyUrl: 'https://www.bourbon.co.jp/product/detail/36218.html',
   },
 ];
 
@@ -364,6 +368,22 @@ function ChocolateSection(props) {
         renderTitle(product.subtitle),
         h(ProductImage, { product: product }),
         h('p', { className: 'section-text section-description' }, product.description),
+        h('div', {
+          className: 'section-text',
+          style: { width: '100%', display: 'flex', justifyContent: 'center' }
+        },
+          h('a', {
+            href: product.buyUrl,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            className: 'buy-button',
+            style: {
+              '--accent-color': product.accentColor,
+              '--accent-color-rgb': hexToRgb(product.accentColor),
+            },
+            onClick: props.onBuy,
+          }, 'ご購入はこちら')
+        ),
         h('span', { className: 'section-text section-price' }, product.price)
       )
     ),
@@ -374,8 +394,36 @@ function ChocolateSection(props) {
   );
 }
 
+// Toast component definition
+function Toast(props) {
+  var toast = props.toast;
+  var onClose = props.onClose;
+
+  useEffect(function() {
+    var timer = setTimeout(onClose, 3500);
+    return function() { clearTimeout(timer); };
+  }, [toast, onClose]);
+
+  return h('div', {
+    className: 'toast-container',
+    style: {
+      '--accent-color': toast.accentColor,
+      '--accent-color-rgb': hexToRgb(toast.accentColor),
+    }
+  },
+    h('div', { className: 'toast-content' },
+      h('span', { className: 'toast-title' }, toast.message),
+      h('span', { className: 'toast-msg' }, toast.productSubtitle)
+    ),
+    h('button', { className: 'toast-close', onClick: onClose, 'aria-label': 'Close' }, '×')
+  );
+}
+
 // App Root
 function App() {
+  var state = useState(null);
+  var toast = state[0], setToast = state[1];
+
   useEffect(function() {
     if (!hasMotion) return;
 
@@ -389,14 +437,31 @@ function App() {
     }
   }, []);
 
+  function handleBuy(product) {
+    setToast({
+      message: 'ショップページを開いています...',
+      productName: product.name,
+      productSubtitle: product.subtitle,
+      accentColor: product.accentColor,
+    });
+  }
+
   return h(Fragment, null,
     h(Navbar, null),
     h(SectionIndicators, null),
     h('main', { style: { position: 'relative', zIndex: 1 } },
       products.map(function(product, i) {
-        return h(ChocolateSection, { key: product.id, product: product, index: i });
+        return h(ChocolateSection, {
+          key: product.id,
+          product: product,
+          index: i,
+          onBuy: function() { handleBuy(product); }
+        });
       })
-    )
+    ),
+    toast
+      ? h(Toast, { toast: toast, onClose: function() { setToast(null); } })
+      : null
   );
 }
 
