@@ -1010,15 +1010,7 @@ a   { text-decoration: none; color: inherit; }
 }
 
 .review-card::before {
-  content: '"';
-  position: absolute;
-  top: -0.3rem;
-  left: 1.2rem;
-  font-family: var(--font-display);
-  font-size: 8rem;
-  color: var(--gold-border);
-  line-height: 1;
-  pointer-events: none;
+  display: none;
 }
 
 .review-card.active-card {
@@ -1032,9 +1024,12 @@ a   { text-decoration: none; color: inherit; }
 }
 
 .review-stars {
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
   color: var(--gold-pure);
+  position: relative;
+  z-index: 1;
+  line-height: 1;
 }
 
 .review-quote {
@@ -1046,6 +1041,8 @@ a   { text-decoration: none; color: inherit; }
   line-height: 1.6;
   position: relative;
   z-index: 1;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--gold-border);
 }
 
 .review-author {
