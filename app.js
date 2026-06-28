@@ -73,7 +73,7 @@
   }
 
   /* ── Story chapters scroll reveal ──────────────────────────────────── */
-  observeElements('.story-chapter', 'visible', { threshold: 0.12 });
+  observeElements('.story-chapter', 'visible', { threshold: 0.35 });
 
   /* ── Products header ───────────────────────────────────────────────── */
   observeElements('.products-header', 'visible', { threshold: 0.2 });
