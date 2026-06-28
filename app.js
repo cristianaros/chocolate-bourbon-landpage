@@ -22,24 +22,25 @@
   window.addEventListener('scroll', updateNavbar, { passive: true });
   updateNavbar();
 
-  /* ── Hero particles ────────────────────────────────────────────────── */
-  var particlesContainer = document.getElementById('hero-particles');
+  /* ── Story particles ────────────────────────────────────────────────── */
+  var particlesContainer = document.getElementById('story-particles');
 
   function spawnParticles() {
     if (!particlesContainer) return;
-    var count = 20;
+    var count = 220;
     for (var i = 0; i < count; i++) {
       var p = document.createElement('div');
-      p.className = 'hero-particle';
+      p.className = 'story-particle';
 
       var left = Math.random() * 100;
-      var dur  = 6 + Math.random() * 8;
-      var del  = Math.random() * 10;
-      var size = 1 + Math.random() * 3;
+      var top  = Math.random() * 100;
+      var dur  = 8 + Math.random() * 10;
+      var del  = Math.random() * 12;
+      var size = 2 + Math.random() * 3.5;
 
       p.style.cssText = [
         'left:' + left + '%',
-        'bottom:' + (Math.random() * 30) + '%',
+        'top:' + top + '%',
         '--dur:' + dur + 's',
         '--delay:' + del + 's',
         'width:' + size + 'px',
@@ -249,6 +250,37 @@
       }
     });
   }
+
+  /* ── Products particles ────────────────────────────────────────────── */
+  var productsParticlesContainer = document.getElementById('products-particles');
+
+  function spawnProductsParticles() {
+    if (!productsParticlesContainer) return;
+    var count = 50;
+    for (var i = 0; i < count; i++) {
+      var p = document.createElement('div');
+      p.className = 'products-particle';
+
+      var left = Math.random() * 100;
+      var top  = Math.random() * 100;
+      var dur  = 8 + Math.random() * 10;
+      var del  = Math.random() * 12;
+      var size = 1.5 + Math.random() * 2.5;
+
+      p.style.cssText = [
+        'left:' + left + '%',
+        'top:' + top + '%',
+        '--dur:' + dur + 's',
+        '--delay:' + del + 's',
+        'width:' + size + 'px',
+        'height:' + size + 'px',
+      ].join(';');
+
+      productsParticlesContainer.appendChild(p);
+    }
+  }
+
+  spawnProductsParticles();
 
   window.addEventListener('scroll', updateActiveNav, { passive: true });
   updateActiveNav();
