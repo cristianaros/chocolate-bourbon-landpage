@@ -118,8 +118,8 @@
     idx = ((idx % total) + total) % total;
     current = idx;
 
-    // Slide the track
-    var cardWidth = track.parentElement.clientWidth + 24; // gap = 24px
+    // Slide the track — cards are flex: 0 0 100%, no gap
+    var cardWidth = track.parentElement.offsetWidth;
     track.style.transform = 'translateX(-' + (idx * cardWidth) + 'px)';
 
     // Active card
