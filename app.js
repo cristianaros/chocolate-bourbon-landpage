@@ -1,14 +1,8 @@
-/* ==========================================================================
-   Alfort Mini Chocolate — Landing Page Script (Vanilla JS)
-   Handles: Navbar scroll, hero particles, story chapter reveal,
-            products / reviews section reveal, reviews carousel, scroll animations
-   ========================================================================== */
-
 (function () {
   'use strict';
 
   /* ── Navbar scroll state ───────────────────────────────────────────── */
-  var navbar = document.getElementById('navbar');
+  const navbar = document.getElementById('navbar');
 
   function updateNavbar() {
     if (!navbar) return;
@@ -22,21 +16,32 @@
   window.addEventListener('scroll', updateNavbar, { passive: true });
   updateNavbar();
 
-  /* ── Story particles ────────────────────────────────────────────────── */
-  var particlesContainer = document.getElementById('story-particles');
+  /* ── OBSERVER MOSTRAR ENTIDADES ────────────────────────── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
 
-  function spawnParticles() {
-    if (!particlesContainer) return;
-    var count = 220;
-    for (var i = 0; i < count; i++) {
-      var p = document.createElement('div');
+  document.querySelectorAll('.story-chapter, .products-header, .reviews-header')
+    .forEach(el => observer.observe(el));
+
+  /* ── CREACION DE PARTICULAS ───────────────────────────────────── */
+  function spawnParticles(containerId, count) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
       p.className = 'story-particle';
 
-      var left = Math.random() * 100;
-      var top  = Math.random() * 100;
-      var dur  = 8 + Math.random() * 10;
-      var del  = Math.random() * 12;
-      var size = 2 + Math.random() * 3.5;
+      const left = Math.random() * 100;
+      const top  = Math.random() * 100;
+      const dur  = 8 + Math.random() * 10;
+      const del  = Math.random() * 12;
+      const size = 2 + Math.random() * 3.5;
 
       p.style.cssText = [
         'left:' + left + '%',
@@ -47,114 +52,71 @@
         'height:' + size + 'px',
       ].join(';');
 
-      particlesContainer.appendChild(p);
+      container.appendChild(p);
     }
   }
 
-  spawnParticles();
+  spawnParticles('story-particles', 220);
+  spawnParticles('presentation-particles', 120);
 
-  /* ── Intersection Observer helper ─────────────────────────────────── */
-  function observeElements(selector, className, options) {
-    var elements = document.querySelectorAll(selector);
-    if (!elements.length) return;
-
-    var opts = Object.assign({ threshold: 0.15 }, options || {});
-
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add(className);
-        }
-      });
-    }, opts);
-
-    elements.forEach(function (el) {
-      observer.observe(el);
-    });
-  }
-
-  /* ── Story chapters scroll reveal ──────────────────────────────────── */
-  observeElements('.story-chapter', 'visible', { threshold: 0.35 });
-
-  /* ── Products header ───────────────────────────────────────────────── */
-  observeElements('.products-header', 'visible', { threshold: 0.2 });
-
-  /* ── Product cards staggered reveal ────────────────────────────────── */
-  var productCards = document.querySelectorAll('.product-card');
-  var cardsObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
+  /* ── CARTAS DE PRODUCTOS ──────────────────────────────── */
+  const cards = document.querySelectorAll('.product-card');
+  const cardsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
-        var idx = Array.prototype.indexOf.call(productCards, entry.target);
-        var delay = idx * 120;
-        setTimeout(function () {
-          entry.target.classList.add('visible');
-        }, delay);
+        const idx = Array.from(cards).indexOf(entry.target);
+        setTimeout(() => entry.target.classList.add('visible'), idx * 100);
         cardsObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
 
-  productCards.forEach(function (card) {
-    cardsObserver.observe(card);
-  });
+  cards.forEach(card => cardsObserver.observe(card));
 
-  /* ── Reviews header ────────────────────────────────────────────────── */
-  observeElements('.reviews-header', 'visible', { threshold: 0.2 });
-
-  /* ── Reviews Carousel ──────────────────────────────────────────────── */
-  var track    = document.getElementById('reviews-track');
-  var dotsWrap = document.getElementById('reviews-dots');
-  var btnPrev  = document.getElementById('rev-prev');
-  var btnNext  = document.getElementById('rev-next');
-  var cards    = track ? track.querySelectorAll('.review-card') : [];
-  var dots     = dotsWrap ? dotsWrap.querySelectorAll('.rdot') : [];
-  var current  = 0;
-  var total    = cards.length;
-  var autoTimer = null;
+  /* ── CARRUSEL REVIEWS ──────────────────────────────────────────────── */
+  const track    = document.getElementById('reviews-track');
+  const dotsWrap = document.getElementById('reviews-dots');
+  const btnPrev  = document.getElementById('rev-prev');
+  const btnNext  = document.getElementById('rev-next');
+  const rCards   = track ? track.querySelectorAll('.review-card') : [];
+  const dots     = dotsWrap ? dotsWrap.querySelectorAll('.rdot') : [];
+  let current    = 0;
+  const total    = rCards.length;
+  let autoTimer  = null;
 
   function goTo(idx) {
     if (!track || !total) return;
-
-    // Clamp
     idx = ((idx % total) + total) % total;
     current = idx;
 
-    // Slide the track — cards are flex: 0 0 100%, no gap
-    var cardWidth = track.parentElement.offsetWidth;
+    const cardWidth = track.parentElement.offsetWidth;
     track.style.transform = 'translateX(-' + (idx * cardWidth) + 'px)';
 
-    // Active card
-    cards.forEach(function (c, i) {
+    rCards.forEach((c, i) => {
       c.classList.toggle('active-card', i === idx);
     });
 
-    // Dots
-    dots.forEach(function (d, i) {
+    dots.forEach((d, i) => {
       d.classList.toggle('active', i === idx);
     });
   }
 
-  // Init — activate first card
-  function initCarousel() {
-    if (!total) return;
-    cards.forEach(function (c) { c.classList.remove('active-card'); });
-    cards[0].classList.add('active-card');
-    startAuto();
-  }
-
   function startAuto() {
     stopAuto();
-    autoTimer = setInterval(function () {
+    autoTimer = setInterval(() => {
       goTo(current + 1);
     }, 5500);
   }
 
   function stopAuto() {
-    if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
+    if (autoTimer) {
+      clearInterval(autoTimer);
+      autoTimer = null;
+    }
   }
 
   if (btnNext) {
-    btnNext.addEventListener('click', function () {
+    btnNext.addEventListener('click', () => {
       stopAuto();
       goTo(current + 1);
       startAuto();
@@ -162,127 +124,36 @@
   }
 
   if (btnPrev) {
-    btnPrev.addEventListener('click', function () {
+    btnPrev.addEventListener('click', () => {
       stopAuto();
       goTo(current - 1);
       startAuto();
     });
   }
 
-  dots.forEach(function (dot, i) {
-    dot.addEventListener('click', function () {
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
       stopAuto();
       goTo(i);
       startAuto();
     });
   });
 
-  // Observe reviews section to start auto when visible
   if (track) {
-    var reviewsObs = new IntersectionObserver(function (entries) {
+    const reviewsObs = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        initCarousel();
+        goTo(0);
+        startAuto();
         reviewsObs.disconnect();
       }
     }, { threshold: 0.2 });
 
-    var reviewsSection = document.getElementById('reviews');
+    const reviewsSection = document.getElementById('reviews');
     if (reviewsSection) reviewsObs.observe(reviewsSection);
   }
 
-  // Handle resize to recalculate slide width
-  var resizeTimer;
-  window.addEventListener('resize', function () {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () {
-      goTo(current);
-    }, 150);
+  window.addEventListener('resize', () => {
+    goTo(current);
   });
-
-  /* ── Smooth scroll for internal anchor links ───────────────────────── */
-  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
-    link.addEventListener('click', function (e) {
-      var target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-
-  /* ── Subtle parallax for hero product image ────────────────────────── */
-  var heroImg = document.getElementById('hero-product-img');
-
-  if (heroImg) {
-    window.addEventListener('scroll', function () {
-      var scrollY = window.scrollY;
-      var translateY = scrollY * 0.18;
-      heroImg.style.transform = 'translateY(' + translateY + 'px)';
-    }, { passive: true });
-  }
-
-  /* ── Energy scene rotation for chapter 3 ──────────────────────────── */
-  // Already handled via CSS animation — no JS needed.
-
-  /* ── Clock hand animation for chapter 1 ───────────────────────────── */
-  // Static SVG display — decorative only.
-
-  /* ── Nav active section highlight ─────────────────────────────────── */
-  var sections = document.querySelectorAll('section[id], footer[id]');
-  var navLinks = document.querySelectorAll('.nav-link');
-
-  function updateActiveNav() {
-    var scrollY = window.scrollY + 120;
-    var current = '';
-
-    sections.forEach(function (sec) {
-      if (sec.offsetTop <= scrollY) {
-        current = sec.id;
-      }
-    });
-
-    navLinks.forEach(function (link) {
-      var href = link.getAttribute('href').replace('#', '');
-      if (href === current) {
-        link.style.color = 'var(--gold-pure)';
-      } else {
-        link.style.color = '';
-      }
-    });
-  }
-
-  /* ── Products particles ────────────────────────────────────────────── */
-  var productsParticlesContainer = document.getElementById('products-particles');
-
-  function spawnProductsParticles() {
-    if (!productsParticlesContainer) return;
-    var count = 50;
-    for (var i = 0; i < count; i++) {
-      var p = document.createElement('div');
-      p.className = 'products-particle';
-
-      var left = Math.random() * 100;
-      var top  = Math.random() * 100;
-      var dur  = 8 + Math.random() * 10;
-      var del  = Math.random() * 12;
-      var size = 1.5 + Math.random() * 2.5;
-
-      p.style.cssText = [
-        'left:' + left + '%',
-        'top:' + top + '%',
-        '--dur:' + dur + 's',
-        '--delay:' + del + 's',
-        'width:' + size + 'px',
-        'height:' + size + 'px',
-      ].join(';');
-
-      productsParticlesContainer.appendChild(p);
-    }
-  }
-
-  spawnProductsParticles();
-
-  window.addEventListener('scroll', updateActiveNav, { passive: true });
-  updateActiveNav();
 
 })();

@@ -5,53 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>アルフォートミニチョコレート | Alfort Mini Chocolate</title>
   <meta name="description" content="Alfort Mini Chocolate — el pequeño placer que transforma tu jornada. Biscuit artesanal cubierto de chocolate fino japonés. Descubre la colección Bourbon.">
+  <!-- ICONO DE LA PESTAÑA -->
   <link rel="icon" type="image/png" href="images/favicon.ico">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- FUENTES DE LA PAGINA (letras) -->
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Noto+Serif+JP:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
-
+  <!-- LIBRERIAS -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
-  <!-- Grain overlay -->
-  <div class="grain" aria-hidden="true"></div>
 
-  <!-- NAV -->
+  <!-- NAVBAR -->
   <header class="navbar" id="navbar">
     <a href="#hero" class="logo" aria-label="Bourbon Alfort">
       <img src="images/favicon.ico" alt="Bourbon Logo" class="logo-img">
     </a>
   </header>
 
-  <!-- HERO / BANNER -->
+  <!-- SECCION HERO (IMAGEN DE REPRESENTACION) -->
   <section class="hero" id="hero" aria-label="Hero banner Alfort Mini Chocolate">
     <div class="hero-bg-gradient"></div>
-
-    <div class="hero-inner">
-      <div class="hero-eyebrow">
-        <span class="gold-line"></span>
-        <span class="eyebrow-text">アルフォートミニチョコレート</span>
-        <span class="gold-line"></span>
-      </div>
-
       <h1 class="hero-title">
-        <span class="hero-title-line line-1">小さな</span>
-        <span class="hero-title-line line-2 gold-text">幸せを</span>
-        <span class="hero-title-line line-3">あなたへ</span>
+        <span class="hero-title-line line-2 gold-text">Imagen chocolate presentativo</span>
       </h1>
-
-      <p class="hero-subtitle">
-        El pequeño placer que ilumina tu día.<br>
-        <em>Alfort Mini Chocolate</em> — biscuit fino con chocolate Bourbon.
-      </p>
   </section>
 
-  <!-- STORY / NARRATIVE SCROLL -->
+  <!-- SECCION DE LA HISTORIA -->
   <section class="story" id="story" aria-label="Historia Alfort">
     <div class="story-particles" id="story-particles" aria-hidden="true"></div>
 
-    <!-- Chapter 1 -->
+    <!-- CAPITULO 1-->
     <article class="story-chapter chapter-1" data-chapter="1">
       <div class="chapter-marker">
         <span class="chapter-num gold-text">01</span>
@@ -69,22 +53,15 @@
           ふと、疲れやストレスで行き詰まる瞬間。
         </p>
       </div>
-      <div class="chapter-visual chapter-visual-1">
-        <div class="office-scene">
-          <div class="scene-glow"></div>
-          <div class="clock-icon">
-            <img src="images/3-clock.jfif" alt="Reloj 3:00" class="clock-img">
-          </div>
-          <div class="floating-dots" aria-hidden="true">
-            <div class="dot d1"></div>
-            <div class="dot d2"></div>
-            <div class="dot d3"></div>
-          </div>
+      <div class="chapter-visual">
+        <div class="visual-wrap">
+          <div class="visual-glow"></div>
+          <img src="images/3-clock.jfif" alt="Reloj 3:00" class="visual-img">
         </div>
       </div>
     </article>
 
-    <!-- Chapter 2 -->
+    <!-- CAPITULO 2 -->
     <article class="story-chapter chapter-2 chapter-reverse" data-chapter="2">
       <div class="chapter-marker">
         <span class="chapter-num gold-text">02</span>
@@ -99,15 +76,15 @@
           「どうにかして、この気分を変えたい…」そんなとき、心も体もホッとする甘さが欲しくなりませんか？
         </p>
       </div>
-      <div class="chapter-visual chapter-visual-2">
-        <div class="choco-box-scene">
-          <div class="scene-glow"></div>
-          <img src="images/cajon-problem.png" alt="El cajón con problemas" class="cajon-img">
+      <div class="chapter-visual">
+        <div class="visual-wrap">
+          <div class="visual-glow"></div>
+          <img src="images/cajon-problem.png" alt="El cajón con problemas" class="visual-img">
         </div>
       </div>
     </article>
 
-    <!-- Chapter 3 -->
+    <!-- CAPITULO 3 -->
     <article class="story-chapter chapter-3" data-chapter="3">
       <div class="chapter-marker">
         <span class="chapter-num gold-text">03</span>
@@ -121,18 +98,18 @@
         <p class="chapter-body">
           そんなあなたに、小さな癒やしの特効薬。アルフォート ミニチョコレート。
         </p>
-
       </div>
-      <div class="chapter-visual chapter-visual-3">
-        <div class="energy-scene">
-          <div class="scene-glow"></div>
-          <img src="images/bocado-milagro.png" alt="El milagro de un bocado" class="bocado-img">
+      <div class="chapter-visual">
+        <div class="visual-wrap">
+          <div class="visual-glow"></div>
+          <img src="images/bocado-milagro.png" alt="El milagro de un bocado" class="visual-img">
         </div>
       </div>
     </article>
 
-    <!-- Chapter 4 — La Recuperación (fin de la historia) -->
-    <article class="story-chapter chapter-4 chapter-reverse chapter-recovery" data-chapter="4">
+    <!-- CAPITULO 4-->
+    <article class="story-chapter chapter-4 chapter-reverse" data-chapter="4">
+      <div class="chapter-visual-bg"></div>
       <div class="chapter-marker">
         <span class="chapter-num gold-text">04</span>
         <span class="chapter-divider"></span>
@@ -143,23 +120,24 @@
           El efecto<br><em class="gold-text">positivo.</em>
         </h2>
         <p class="chapter-body">
-          ひとくちで、濃厚な甘さとサクサクの食感が広がり、疲れた脳をリセット。再びポジティブな集中モードへ！
+          ひとくchで、濃厚な甘さとサクサクの食感が広がり、疲れた脳をリセット。再びポジティブな集中モードへ！
         </p>
       </div>
-      <div class="chapter-visual chapter-visual-4">
-        <div class="energy-scene">
-          <div class="scene-glow"></div>
-          <img src="images/perfect.jpg" alt="La Recuperación Perfecta" class="recovery-img">
+      <div class="chapter-visual">
+        <div class="visual-wrap">
+          <div class="visual-glow"></div>
+          <img src="images/perfect.jpg" alt="La Recuperación Perfecta" class="visual-img">
         </div>
       </div>
     </article>
   </section>
 
-  <!-- CHOCOLATE PRESENTATION —— standalone section between story and products -->
+  <!-- CHOCOLATE PRESENTATION -->
   <section class="chocolate-presentation" id="chocolate-presentation" aria-label="Presentación Alfort Mini Chocolate">
+    <div class="presentation-particles" id="presentation-particles" aria-hidden="true"></div>
     <div class="choco-pres-inner">
       <div class="choco-pres-text">
-        <span class="chapter-kicker gold-text">アルフォートミニチョコレート</span>
+        <span class="chapter-kicker">アルフォートミニチョコレート</span>
         <h2 class="choco-pres-title">
           <em class="gold-text">アルフォートミニチョコレートとは？</em>
         </h2>
@@ -174,214 +152,222 @@
     </div>
   </section>
 
-  <!-- PRODUCTS SECTION -->
+  <!-- SECCOIN PRODUCTOS -->
   <section class="products" id="products" aria-label="Colección de productos">
-    <div class="products-particles" id="products-particles" aria-hidden="true"></div>
-    <div class="products-header">
-      <span class="section-eyebrow gold-text">製品紹介</span>
-      <h2 class="section-heading">
-        La <span class="gold-text">Colección</span>
-      </h2>
-      <p class="section-subheading">
-        Cuatro variantes únicas. Un mismo placer irresistible.
-      </p>
-    </div>
+    <div class="products-inner">
+      <div class="products-header">
+        <span class="section-eyebrow">製品紹介</span>
+        <h2 class="section-heading">
+          La <span class="gold-text">Colección</span>
+        </h2>
+        <p class="section-subheading">
+          Cuatro variantes únicas. Un mismo placer irresistible.
+        </p>
+      </div>
 
-    <div class="products-grid">
+      <div class="products-grid">
 
-      <!-- Producto 1: Classic Blue -->
-      <article class="product-card" id="product-classic">
-        <div class="product-card-glow" style="--glow-color: #4A7EC7;"></div>
-        <div class="product-card-badge">BEST SELLER</div>
-        <div class="product-img-wrap">
-          <img src="images/chocolate normal.webp" alt="Alfort Mini Chocolate Classic" class="product-card-img" loading="lazy">
-        </div>
-        <div class="product-card-body">
-          <span class="product-label" style="color:#4A7EC7;">ミルクチョコレート</span>
-          <h3 class="product-name gold-text">Classic Milk</h3>
-          <p class="product-desc">
-            El original. Biscuit de trigo integral con chocolate con leche. La combinación que inició todo.
-          </p>
-          <div class="product-footer">
-            <span class="product-price">¥220</span>
-            <a href="https://www.bourbon.co.jp/product/detail/35360-03.html" target="_blank" rel="noopener" class="product-btn" style="--btn-accent: #4A7EC7;">
-              購入 →
-            </a>
+        <!-- Producto 1: CHOCOLATE NORMAL -->
+        <article class="product-card" id="product-classic" style="--accent-color: #4A7EC7;">
+          <div class="product-glow-line"></div>
+          <div class="product-badge">BEST SELLER</div>
+          <div class="product-img-wrap">
+            <img src="images/chocolate normal.webp" alt="Alfort Mini Chocolate Classic" class="product-card-img" loading="lazy">
           </div>
-        </div>
-      </article>
-
-      <!-- Producto 2: Rich Milk -->
-      <article class="product-card" id="product-richmilk">
-        <div class="product-card-glow" style="--glow-color: #5BB8D4;"></div>
-        <div class="product-img-wrap">
-          <img src="images/chocolate leche.webp" alt="Alfort Rich Milk Chocolate" class="product-card-img" loading="lazy">
-        </div>
-        <div class="product-card-body">
-          <span class="product-label" style="color:#5BB8D4;">リッチミルク</span>
-          <h3 class="product-name gold-text">Rich Milk</h3>
-          <p class="product-desc">
-            Chocolate de leche cremoso y espeso. Sabor profundo que envuelve el paladar con cada bocado.
-          </p>
-          <div class="product-footer">
-            <span class="product-price">¥220</span>
-            <a href="https://www.bourbon.co.jp/product/detail/36416.html" target="_blank" rel="noopener" class="product-btn" style="--btn-accent: #5BB8D4;">
-              購入 →
-            </a>
+          <div class="product-card-body">
+            <span class="product-label" style="color:#4A7EC7;">ミルクチョコレート</span>
+            <h3 class="product-name gold-text">Classic Milk</h3>
+            <p class="product-desc">
+              El original. Biscuit de trigo integral con chocolate con leche. La combinación que inició todo.
+            </p>
+            <div class="product-footer">
+              <span class="product-price">¥220</span>
+              <a href="https://www.bourbon.co.jp/product/detail/35360-03.html" target="_blank" rel="noopener" class="product-btn" style="--btn-color: #4A7EC7;">
+                購入 →
+              </a>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- Producto 3: Vanilla White -->
-      <article class="product-card" id="product-vanilla">
-        <div class="product-card-glow" style="--glow-color: #D4C5A0;"></div>
-        <div class="product-img-wrap">
-          <img src="images/chocolate vainilla.webp" alt="Alfort Vanilla White Chocolate" class="product-card-img" loading="lazy">
-        </div>
-        <div class="product-card-body">
-          <span class="product-label" style="color:#D4C5A0;">バニラホワイト</span>
-          <h3 class="product-name gold-text">Vanilla White</h3>
-          <p class="product-desc">
-            Chocolate blanco aterciopelado con vainilla de Madagascar. Suave, dulce e irresistible.
-          </p>
-          <div class="product-footer">
-            <span class="product-price">¥240</span>
-            <a href="https://www.bourbon.co.jp/product/detail/35362-02.html" target="_blank" rel="noopener" class="product-btn" style="--btn-accent: #D4C5A0;">
-              購入 →
-            </a>
+        <!-- Producto 2: CHOCOLATE DE LECHE -->
+        <article class="product-card" id="product-richmilk" style="--accent-color: #5BB8D4;">
+          <div class="product-glow-line"></div>
+          <div class="product-img-wrap">
+            <img src="images/chocolate leche.webp" alt="Alfort Rich Milk Chocolate" class="product-card-img" loading="lazy">
           </div>
-        </div>
-      </article>
-
-      <!-- Producto 4: Dark Sable -->
-      <article class="product-card" id="product-dark">
-        <div class="product-card-glow" style="--glow-color: #9C7A6A;"></div>
-        <div class="product-img-wrap">
-          <img src="images/chocolate amargo.webp" alt="Alfort Chocolat Sable Dark" class="product-card-img" loading="lazy">
-        </div>
-        <div class="product-card-body">
-          <span class="product-label" style="color:#9C7A6A;">ショコラサブレ</span>
-          <h3 class="product-name gold-text">Chocolat Sablé</h3>
-          <p class="product-desc">
-            Cacao intenso sobre un sablé de mantequilla fermentada. Para los amantes del chocolate puro.
-          </p>
-          <div class="product-footer">
-            <span class="product-price">¥240</span>
-            <a href="https://www.bourbon.co.jp/product/detail/36218.html" target="_blank" rel="noopener" class="product-btn" style="--btn-accent: #9C7A6A;">
-              購入 →
-            </a>
+          <div class="product-card-body">
+            <span class="product-label" style="color:#5BB8D4;">リッチミルク</span>
+            <h3 class="product-name gold-text">Rich Milk</h3>
+            <p class="product-desc">
+              Chocolate de leche cremoso y espeso que envuelve el paladar con dulzura.
+            </p>
+            <div class="product-footer">
+              <span class="product-price">¥220</span>
+              <a href="https://www.bourbon.co.jp/product/detail/36416.html" target="_blank" rel="noopener" class="product-btn" style="--btn-color: #5BB8D4;">
+                購入 →
+              </a>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
 
+        <!-- Producto 3: CHOCOLATE BLANCO -->
+        <article class="product-card" id="product-vanilla" style="--accent-color: #D4C5A0;">
+          <div class="product-glow-line"></div>
+          <div class="product-img-wrap">
+            <img src="images/chocolate vainilla.webp" alt="Alfort Vanilla White Chocolate" class="product-card-img" loading="lazy">
+          </div>
+          <div class="product-card-body">
+            <span class="product-label" style="color:#D4C5A0;">バニラホワイト</span>
+            <h3 class="product-name gold-text">Vanilla White</h3>
+            <p class="product-desc">
+              Chocolate blanco aterciopelado con vainilla de Madagascar. Suave, dulce e irresistible.
+            </p>
+            <div class="product-footer">
+              <span class="product-price">¥240</span>
+              <a href="https://www.bourbon.co.jp/product/detail/35362-02.html" target="_blank" rel="noopener" class="product-btn" style="--btn-color: #D4C5A0;">
+                購入 →
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Producto 4: CHOCOLATE NEGRO -->
+        <article class="product-card" id="product-dark" style="--accent-color: #9C7A6A;">
+          <div class="product-glow-line"></div>
+          <div class="product-img-wrap">
+            <img src="images/chocolate amargo.webp" alt="Alfort Chocolat Sable Dark" class="product-card-img" loading="lazy">
+          </div>
+          <div class="product-card-body">
+            <span class="product-label" style="color:#9C7A6A;">ショコラサブレ</span>
+            <h3 class="product-name gold-text">Chocolat Sablé</h3>
+            <p class="product-desc">
+              Cacao intenso sobre un sablé de mantequilla fermentada. Para los amantes del chocolate puro.
+            </p>
+            <div class="product-footer">
+              <span class="product-price">¥240</span>
+              <a href="https://www.bourbon.co.jp/product/detail/36218.html" target="_blank" rel="noopener" class="product-btn" style="--btn-color: #9C7A6A;">
+                購入 →
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
     </div>
   </section>
 
-  <!-- REVIEWS SECTION -->
+  <!-- SECCOIN DE REVIEWS -->
   <section class="reviews" id="reviews" aria-label="Reseñas de clientes">
     <div class="reviews-bg-deco" aria-hidden="true"></div>
-    <div class="reviews-header">
-      <span class="section-eyebrow gold-text">レビュー</span>
-      <h2 class="section-heading">
-        Lo que dicen en la <span class="gold-text">oficina</span>
-      </h2>
-    </div>
-
-    <div class="reviews-track-wrap">
-      <div class="reviews-track" id="reviews-track">
-
-        <div class="review-card" id="review-1">
-          <div class="review-stars">★★★★★</div>
-          <blockquote class="review-quote">
-            "A las 3 PM ya no puedo más, pero un Alfort y vuelvo a estar al 100%. Nunca falta en mi cajón."
-          </blockquote>
-          <div class="review-author">
-            <div class="review-avatar" style="background: linear-gradient(135deg, #4A7EC7, #2a4f8a);">S</div>
-            <div class="review-info">
-              <span class="reviewer-name">Sora K.</span>
-              <span class="reviewer-role">Diseñadora UX · Tokio</span>
-            </div>
-          </div>
-          <div class="review-product-tag">Classic Milk</div>
-        </div>
-
-        <div class="review-card review-featured" id="review-2">
-          <div class="review-stars">★★★★★</div>
-          <blockquote class="review-quote">
-            "En nuestra oficina lo llamamos el 'botón de reinicio'. Cuando el equipo está agotado, alguien saca Alfort y todo mejora al instante."
-          </blockquote>
-          <div class="review-author">
-            <div class="review-avatar" style="background: linear-gradient(135deg, #C9A84C, #8a6b1e);">M</div>
-            <div class="review-info">
-              <span class="reviewer-name">Min-jun L.</span>
-              <span class="reviewer-role">Product Manager · Seúl</span>
-            </div>
-          </div>
-          <div class="review-product-tag gold-tag">Rich Milk</div>
-        </div>
-
-        <div class="review-card" id="review-3">
-          <div class="review-stars">★★★★★</div>
-          <blockquote class="review-quote">
-            "El biscuit crujiente con ese chocolate... imposible comer solo uno. Perfecto para las tardes de trabajo duro."
-          </blockquote>
-          <div class="review-author">
-            <div class="review-avatar" style="background: linear-gradient(135deg, #5BB8D4, #2a7a92);">H</div>
-            <div class="review-info">
-              <span class="reviewer-name">Hana T.</span>
-              <span class="reviewer-role">Analista · Osaka</span>
-            </div>
-          </div>
-          <div class="review-product-tag">Vanilla White</div>
-        </div>
-
-        <div class="review-card" id="review-4">
-          <div class="review-stars">★★★★★</div>
-          <blockquote class="review-quote">
-            "Compro una caja cada semana. Mis compañeros ya me piden que no se me olvide traerlos a la oficina."
-          </blockquote>
-          <div class="review-author">
-            <div class="review-avatar" style="background: linear-gradient(135deg, #9C7A6A, #5e3d32);">J</div>
-            <div class="review-info">
-              <span class="reviewer-name">Ji-won P.</span>
-              <span class="reviewer-role">Ingeniero · Busan</span>
-            </div>
-          </div>
-          <div class="review-product-tag">Chocolat Sablé</div>
-        </div>
-
-        <div class="review-card" id="review-5">
-          <div class="review-stars">★★★★★</div>
-          <blockquote class="review-quote">
-            "Me lo recomendó una colega y desde entonces no puedo imaginar la semana laboral sin mi Alfort. Es pura alegría."
-          </blockquote>
-          <div class="review-author">
-            <div class="review-avatar" style="background: linear-gradient(135deg, #D4A0C9, #8a3d70);">Y</div>
-            <div class="review-info">
-              <span class="reviewer-name">Yuki M.</span>
-              <span class="reviewer-role">Arquitecta · Kioto</span>
-            </div>
-          </div>
-          <div class="review-product-tag">Classic Milk</div>
-        </div>
-
+    <div class="reviews-inner">
+      <div class="reviews-header">
+        <span class="section-eyebrow">レビュー</span>
+        <h2 class="section-heading">
+          Lo que dicen en la <span class="gold-text">oficina</span>
+        </h2>
       </div>
-    </div>
 
-    <div class="reviews-nav" aria-label="Navegación de reseñas">
-      <button class="reviews-nav-btn" id="rev-prev" aria-label="Reseña anterior">‹</button>
-      <div class="reviews-dots" id="reviews-dots" aria-hidden="true">
-        <button class="rdot active" data-i="0"></button>
-        <button class="rdot" data-i="1"></button>
-        <button class="rdot" data-i="2"></button>
-        <button class="rdot" data-i="3"></button>
-        <button class="rdot" data-i="4"></button>
+      <div class="reviews-track-wrap">
+        <div class="reviews-track" id="reviews-track">
+
+          <!-- RESEÑA 1 -->
+          <div class="review-card" id="review-1">
+            <div class="review-stars">★★★★★</div>
+            <blockquote class="review-quote">
+              "A las 3 PM ya no puedo más, pero un Alfort y vuelvo a estar al 100%. Nunca falta en mi cajón."
+            </blockquote>
+            <div class="review-author">
+              <div class="review-avatar" style="background: linear-gradient(135deg, #4A7EC7, #2a4f8a);">S</div>
+              <div class="review-info">
+                <span class="reviewer-name">Sora K.</span>
+                <span class="reviewer-role">Diseñadora UX · Tokio</span>
+              </div>
+            </div>
+            <div class="review-tag">Classic Milk</div>
+          </div>
+
+          <!-- RESEÑA 2 -->
+          <div class="review-card review-featured" id="review-2">
+            <div class="review-stars">★★★★★</div>
+            <blockquote class="review-quote">
+              "En nuestra oficina lo llamamos el 'botón de reinicio'. Cuando el equipo está agotado, alguien saca Alfort y todo mejora al instante."
+            </blockquote>
+            <div class="review-author">
+              <div class="review-avatar" style="background: linear-gradient(135deg, #C9A84C, #8a6b1e);">M</div>
+              <div class="review-info">
+                <span class="reviewer-name">Min-jun L.</span>
+                <span class="reviewer-role">Product Manager · Seúl</span>
+              </div>
+            </div>
+            <div class="review-tag gold-tag">Rich Milk</div>
+          </div>
+
+          <!-- RESEÑA 3 -->
+          <div class="review-card" id="review-3">
+            <div class="review-stars">★★★★★</div>
+            <blockquote class="review-quote">
+              "El biscuit crujiente con ese chocolate... imposible comer solo uno. Perfecto para las tardes de trabajo duro."
+            </blockquote>
+            <div class="review-author">
+              <div class="review-avatar" style="background: linear-gradient(135deg, #5BB8D4, #2a7a92);">H</div>
+              <div class="review-info">
+                <span class="reviewer-name">Hana T.</span>
+                <span class="reviewer-role">Analista · Osaka</span>
+              </div>
+            </div>
+            <div class="review-tag">Vanilla White</div>
+          </div>
+
+          <!-- RESEÑA 4 -->
+          <div class="review-card" id="review-4">
+            <div class="review-stars">★★★★★</div>
+            <blockquote class="review-quote">
+              "Compro una caja cada semana. Mis compañeros ya me piden que no se me olvide traerlos a la oficina."
+            </blockquote>
+            <div class="review-author">
+              <div class="review-avatar" style="background: linear-gradient(135deg, #9C7A6A, #5e3d32);">J</div>
+              <div class="review-info">
+                <span class="reviewer-name">Ji-won P.</span>
+                <span class="reviewer-role">Ingeniero · Busan</span>
+              </div>
+            </div>
+            <div class="review-tag">Chocolat Sablé</div>
+          </div>
+
+          <!-- RESEÑA 5 -->
+          <div class="review-card" id="review-5">
+            <div class="review-stars">★★★★★</div>
+            <blockquote class="review-quote">
+              "Me lo recomendó una colega y desde entonces no puedo imaginar la semana laboral sin mi Alfort. Es pura alegría."
+            </blockquote>
+            <div class="review-author">
+              <div class="review-avatar" style="background: linear-gradient(135deg, #D4A0C9, #8a3d70);">Y</div>
+              <div class="review-info">
+                <span class="reviewer-name">Yuki M.</span>
+                <span class="reviewer-role">Arquitecta · Kioto</span>
+              </div>
+            </div>
+            <div class="review-tag">Classic Milk</div>
+          </div>
+
+        </div>
       </div>
-      <button class="reviews-nav-btn" id="rev-next" aria-label="Siguiente reseña">›</button>
-    </div>
+
+      <!-- CARRUSEL REVIEWS  (LOS BOTONES PARA MOVERSE)-->
+      <div class="reviews-nav" aria-label="Navegación de reseñas">
+        <button class="reviews-nav-btn" id="rev-prev" aria-label="Reseña anterior"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 1rem; height: 1rem; display: block;"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+        <div class="reviews-dots" id="reviews-dots" aria-hidden="true">
+          <button class="rdot active" data-i="0"></button>
+          <button class="rdot" data-i="1"></button>
+          <button class="rdot" data-i="2"></button>
+          <button class="rdot" data-i="3"></button>
+          <button class="rdot" data-i="4"></button>
+        </div>
+        <button class="reviews-nav-btn" id="rev-next" aria-label="Siguiente reseña"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 1rem; height: 1rem; display: block;"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+      </div>
   </section>
 
-  <!-- FOOTER / END -->
+  <!-- FOOTER y END -->
   <footer class="site-footer" id="footer" aria-label="Pie de página">
     <div class="footer-bg" aria-hidden="true">
       <div class="footer-glow-1"></div>
@@ -389,40 +375,26 @@
     </div>
 
     <div class="footer-inner">
-      <div class="footer-logo-block">
-        <img src="images/favicon.ico" alt="Bourbon" class="footer-logo">
-        <p class="footer-tagline">
-          <span class="gold-text">小さな幸せ</span>、<br>
-          毎日の中に。
-        </p>
-        <p class="footer-tagline-sub">
-          Un pequeño placer, cada día.
-        </p>
-      </div>
+      <div class="footer-top">
+        <div class="footer-logo-block">
+          <img src="images/favicon.ico" alt="Bourbon" class="footer-logo">
+          <div class="footer-text-group">
+            <p class="footer-tagline">
+              <span class="gold-text">小さな幸せ、<br>
+              毎日の中に。</span>
+            </p>
+            <p class="footer-tagline-sub">
+              Un pequeño placer, cada día.
+            </p>
+          </div>
+        </div>
 
-      <div class="footer-ornament" aria-hidden="true">
-        <svg viewBox="0 0 300 80" fill="none" width="300" height="80">
-          <line x1="0" y1="40" x2="120" y2="40" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/>
-          <circle cx="150" cy="40" r="12" stroke="#C9A84C" stroke-width="0.8" opacity="0.6"/>
-          <path d="M150 28L154 37H163L156 43L158 52L150 46L142 52L144 43L137 37H146L150 28Z" fill="#C9A84C" opacity="0.5"/>
-          <line x1="180" y1="40" x2="300" y2="40" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/>
-        </svg>
-      </div>
-
-      <div class="footer-cta-block">
-        <p class="footer-cta-label">¿Listo para tu pequeño placer?</p>
-        <a
-          href="https://www.bourbon.co.jp/product/detail/35360-03.html"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-primary footer-buy-btn"
-          id="footer-buy-btn"
-        >
-          <span>今すぐ購入</span>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
+        <div class="footer-cta-block">
+          <p class="footer-cta-label">¿Listo para tu pequeño placer?</p>
+          <a href="https://www.bourbon.co.jp/product/detail/35360-03.html" target="_blank" rel="noopener noreferrer" class="footer-buy-btn" id="footer-buy-btn">
+            <span>今すぐ購入</span>
+          </a>
+        </div>
       </div>
 
       <div class="footer-divider" aria-hidden="true"></div>
